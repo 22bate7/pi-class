@@ -1,3 +1,19 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+nav {
+    @apply bg-gray-900 text-white p-5 flex items-center justify-around flex-wrap;
+}
+.logo-text {
+    @apply text-white text-2xl;
+}
+.search-box {
+    @apply flex align-middle justify-around;
+}
+.search-box input {
+    @apply py-2 pl-2 pr-5 rounded-lg border-solid border-2 border-gray-600;
+}
+.profile-photo {
+    @apply p-1 rounded-full bg-white text-black mx-1;
+}
