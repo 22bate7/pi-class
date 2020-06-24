@@ -17,3 +17,12 @@ nav {
 .profile-photo {
     @apply p-1 rounded-full bg-white text-black mx-1;
 }
+.dashboard {
+    @apply rounded-lg mt-6 mx-6 p-10 border-solid border-2;
+}
+.options {
+    @apply border-solid border-gray-300 border-b-2 py-2;
+}
+.options span {
+    @apply mx-5 py-2;
+}

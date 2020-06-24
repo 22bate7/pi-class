@@ -14396,6 +14396,33 @@ nav {
   margin-right: 0.25rem;
 }
 
+.dashboard {
+  border-radius: 0.5rem;
+  margin-top: 1.5rem;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  padding: 2.5rem;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.options {
+  border-style: solid;
+  --border-opacity: 1;
+  border-color: #e2e8f0;
+  border-color: rgba(226, 232, 240, var(--border-opacity));
+  border-bottom-width: 2px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.options span {
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {
     --space-y-reverse: 0;

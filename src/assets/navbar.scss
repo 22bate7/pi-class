@@ -1,20 +1,5 @@
-$primary:#f87060;
-$dark-background:#4a4a4a;
-$light-background:#f8f8f8;
+@import './config.scss';
 
-@mixin center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-@mixin navHover {
-    color: $light-background;
-    transition: color 400ms ease-in-out;
-    &:hover {
-        color: $primary;
-        cursor: pointer;
-    }
-}
 nav {
     background-color: $dark-background;
     .search-box {

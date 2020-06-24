@@ -1,0 +1,30 @@
+@import './config.scss';
+
+.dashboard {
+    border-radius: 20px;
+    span {
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    span.selected {
+        position: relative;
+        &::before {
+            position: absolute;
+            content: '';
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: $primary;
+        }
+    }
+    
+    @media(max-width:500px) {
+        .options {
+            display: flex;
+            justify-content: space-evenly;
+            padding: 0;
+        }
+    }
+}

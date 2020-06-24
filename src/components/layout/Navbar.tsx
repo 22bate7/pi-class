@@ -27,7 +27,7 @@ const Navbar:React.FC = () =>{
         <nav>
             <Link to="/" className="logo-text"><BookIcon size={30}/> Homework</Link>
             <form className="search-box" onSubmit={handleSubmit}>
-                <input type="text" placeholder="Search by Class,Subject,Date" name="search" value={search} onChange={handleChange}/>
+                <input type="text" autoComplete="off" placeholder="Search by Class,Subject,Date" name="search" value={search} onChange={handleChange}/>
                 <button type="submit" className="search-btn">
                     <SearchIcon size={24} />
                 </button>
