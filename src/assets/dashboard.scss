@@ -16,7 +16,17 @@
             left: 0;
             right: 0;
             height: 2px;
+            width: 0px;
             background-color: $primary;
+            animation: animate 500ms ease-in-out forwards;
+        }
+        @keyframes animate {
+            0% {
+                width: 0px;
+            }
+            100% {
+                width: 100%;
+            }
         }
     }
     

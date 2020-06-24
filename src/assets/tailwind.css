@@ -26,3 +26,30 @@ nav {
 .options span {
     @apply mx-5 py-2;
 }
+.addHomework-btn {
+    @apply flex justify-center items-center p-2 rounded-full;
+}
+.addHomework {
+    @apply flex z-10 absolute top-0 left-0 right-0 bottom-0 items-center justify-center;
+}
+.addHomework-form {
+    @apply p-10 flex flex-col justify-center rounded-lg;
+}
+.addHomework-form * {
+    @apply my-2 ;
+}
+.addHomework-form small {
+    @apply border-solid border-b-2 border-gray-300 m-0;
+}
+.addHomework-form input , .addHomework-form select {
+    @apply p-2 bg-gray-300 mx-2 rounded-lg;
+}
+.addHomework-form input[type="text"] {
+    @apply mr-0;
+}
+.addHomework-form button {
+    @apply rounded-lg px-5 py-3 text-white border-solid border-2 border-gray-300;
+}
+.error {
+    @apply flex justify-center p-2 border-solid border-red-900 border-2 bg-red-100;
+}

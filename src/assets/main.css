@@ -14423,6 +14423,92 @@ nav {
   padding-bottom: 0.5rem;
 }
 
+.addHomework-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 9999px;
+}
+
+.addHomework {
+  display: flex;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.addHomework-form {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 0.5rem;
+}
+
+.addHomework-form * {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.addHomework-form small {
+  border-style: solid;
+  border-bottom-width: 2px;
+  --border-opacity: 1;
+  border-color: #e2e8f0;
+  border-color: rgba(226, 232, 240, var(--border-opacity));
+  margin: 0;
+}
+
+.addHomework-form input , .addHomework-form select {
+  padding: 0.5rem;
+  --bg-opacity: 1;
+  background-color: #e2e8f0;
+  background-color: rgba(226, 232, 240, var(--bg-opacity));
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.addHomework-form input[type="text"] {
+  margin-right: 0;
+}
+
+.addHomework-form button {
+  border-radius: 0.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  --text-opacity: 1;
+  color: #fff;
+  color: rgba(255, 255, 255, var(--text-opacity));
+  border-style: solid;
+  border-width: 2px;
+  --border-opacity: 1;
+  border-color: #e2e8f0;
+  border-color: rgba(226, 232, 240, var(--border-opacity));
+}
+
+.error {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+  border-style: solid;
+  --border-opacity: 1;
+  border-color: #742a2a;
+  border-color: rgba(116, 42, 42, var(--border-opacity));
+  border-width: 2px;
+  --bg-opacity: 1;
+  background-color: #fff5f5;
+  background-color: rgba(255, 245, 245, var(--bg-opacity));
+}
+
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {
     --space-y-reverse: 0;

@@ -2,7 +2,7 @@ import React,{ useState } from 'react';
 // import ProtoType from 'prop-types';
 import '../../assets/dashboard.scss';
 import { connect } from 'react-redux';
-import { selectCatagory } from '../../actions/actions' 
+import { selectCatagory } from '../../actions/actions' ;
 
 interface Props {
     catagories:string[],

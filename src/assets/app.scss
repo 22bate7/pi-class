@@ -1,0 +1,9 @@
+@import './config.scss';
+
+.addHomework-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color: $primary;
+    background-color: $dark-background;
+}

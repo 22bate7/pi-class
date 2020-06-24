@@ -1,4 +1,4 @@
-import { SELECT_CATAGORY } from './types';
+import { SELECT_CATAGORY,SHOW_POPUP,HIDE_POPUP,SHOW_ERROR,HIDE_ERROR } from './types';
 
 export const selectCatagory = (catagory:string) => (dispatch:any) =>{
     dispatch({
@@ -7,4 +7,37 @@ export const selectCatagory = (catagory:string) => (dispatch:any) =>{
             catagory
         }
     })
+}
+
+export const showPopup = ()=> (dispatch:any)=>{
+    dispatch({
+        type:SHOW_POPUP,
+        payload : {
+            showPopup:true
+        }
+    })
+}
+
+export const hidePopup = ()=> (dispatch:any)=>{
+    dispatch({
+        type:HIDE_POPUP,
+        payload : {
+            showPopup:false
+        }
+    })
+}
+
+export const showError = (msg:string)=>(dispatch:any)=>{
+    dispatch({
+        type:SHOW_ERROR,
+        payload:{
+            msg
+        }
+    });
+
+    setTimeout(()=>{
+        dispatch({
+            type:HIDE_ERROR
+        })
+    },5000);
 }
