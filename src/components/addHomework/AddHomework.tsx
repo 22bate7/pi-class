@@ -2,50 +2,103 @@ import React,{ useState } from 'react';
 import '../../assets/addHomework.scss';
 import { XIcon } from '@primer/octicons-react';
 import { connect } from 'react-redux';
-import { hidePopup,showError } from '../../actions/actions';
+import { hidePopup,showError,addHomework } from '../../actions/actions';
 import ErrorBox from '../layout/errorBox';
 
 interface Props {
     homework:any,
     hidePopup:any,
-    showError:any
+    showError:any,
+    addHomework:any
 }
 
 const AddHomework:React.FC<Props> = (props)=>{
 
-    const { homework,hidePopup,showError } = props;
+    const { homework,hidePopup,showError,addHomework } = props;
 
-    const [homeworkData, setHomeworkData] = useState({
+    interface HomeworkDataType {
+        standard:string,
+        subject:string,
+        title:string,
+        description:string,
+        otherFiles:string,
+        homeworkDue:string
+    }
+
+    const HomeworkInitState:HomeworkDataType = {
         standard:'',
         subject:'',
         title:'',
         description:'',
+        otherFiles:'',
+        homeworkDue:''
+    }
+    
+    interface Dues {
+        dueDate:string,
+        dueTime:string
+    }
+    const initDues:Dues = {
         dueDate:'',
-        dueTime:'',
-        otherFiles:''
-    });
-    const { standard,subject,title,description,dueDate,otherFiles,dueTime } = homeworkData;
+        dueTime:''
+    }
+
+    const [homeworkData, setHomeworkData] = useState(HomeworkInitState);
+    const [dues, setDues] = useState(initDues);
+    const { dueDate,dueTime } = dues; 
+    const { standard,subject,title,description,otherFiles } = homeworkData;
 
     const hideAddHomework = ()=>{
         hidePopup();
     }
     const handleChange = (e: { target: { name: any; value: any; }; }) =>{
-        setHomeworkData({
-            ...homeworkData,
-            [e.target.name]:e.target.value
-        })
+        if(e.target.name.includes('due')) {
+            setDues({
+                ...dues,
+                [e.target.name]:e.target.value
+            })
+        }else {
+            setHomeworkData({
+                ...homeworkData,
+                [e.target.name]:e.target.value
+            })
+        }
     }
-    const handleSubmit = (e: { preventDefault: () => void; })=>{
+    const handleSubmit = (e:any)=>{
         e.preventDefault();
+        const homeworkDue = new Date(`${dueDate}T${dueTime}`);
         if(homeworkData.standard === '' || homeworkData.standard === 'Standard') {
             console.log('Please select standard');
             showError('Please select standard');
         }
+        else if(homeworkData.title.trim()==='' || homeworkData.description.trim()===''|| dues.dueDate.trim()==='' || dues.dueTime.trim()==='') {
+            showError('Please fill out all fields');
+        }
         else if(homeworkData.subject === '' || homeworkData.standard === 'Subject') {
             console.log('Please select subject');
             showError('Please select subject');
-        }else {
+        }else if(new Date(dueDate).valueOf() - new Date().valueOf() <= 0) {
+            console.log(dueDate);
+            showError('Please select correct Date');
+        }
+        else {
+            console.log(dueDate,dueTime);
+            homeworkData.homeworkDue = homeworkDue.toString();
             console.log(homeworkData);
+            addHomework(homeworkData);
+            hideAddHomework();
+            setHomeworkData({
+                standard:'',
+                subject:'',
+                title:'',
+                description:'',
+                otherFiles:'',
+                homeworkDue:''
+            });
+            setDues({
+                dueDate:'',
+                dueTime:''
+            });
         }
     }
 
@@ -61,17 +114,17 @@ const AddHomework:React.FC<Props> = (props)=>{
                 <div className="group">
                     <select name="standard" className="class-select" value={standard} onChange={handleChange} required>
                         <option>Standard</option>
-                        <option value="II-2nd-A">II - 2nd - A</option>
-                        <option value="II-2nd-B">II - 2nd - B</option>
-                        <option value="II-2nd-C">II - 2nd - C</option>
-                        <option value="II-2nd-D">II - 2nd - D</option>
+                        <option value="2nd-A">2nd - A</option>
+                        <option value="2nd-B">2nd - B</option>
+                        <option value="2nd-C">2nd - C</option>
+                        <option value="2nd-D">2nd - D</option>
                     </select>
                     <select name="subject" className="subject-select" value={subject} onChange={handleChange} required>
                         <option>Subject</option>
-                        <option value="JavaScript">JavaScript</option>
-                        <option value="TypeScript">TypeScript</option>
-                        <option value="Python">Python</option>
-                        <option value="C#">C#</option>
+                        <option value="Computer">Computer</option>
+                        <option value="Maths">Maths</option>
+                        <option value="Physics">Physics</option>
+                        <option value="Chemistry">Chemistry</option>
                     </select>
                 </div>
                 <input type="text" name="title" placeholder="Title" value={title} onChange={handleChange} required/>
@@ -81,7 +134,7 @@ const AddHomework:React.FC<Props> = (props)=>{
                     <input type="time" name="dueTime" value={dueTime} onChange={handleChange} required/>
                     <input type="file" name="otherFiles" value={otherFiles} onChange={handleChange}/>
                 </div>
-                <button type="submit">Add Homework</button>
+                <button type="submit" onClick={handleSubmit}>Add Homework</button>
             </form>
         </div>
     )
@@ -95,5 +148,6 @@ const mapStateToProps = (state:any)=>{
 
 export default connect(mapStateToProps,{
     hidePopup,
-    showError
+    showError,
+    addHomework
 })(AddHomework);

@@ -3,3 +3,4 @@ export const SHOW_POPUP = 'show_popup';
 export const HIDE_POPUP = 'hide_popup';
 export const SHOW_ERROR = 'show_erroe';
 export const HIDE_ERROR = 'hide_error';
+export const ADD_HOMEWORK = 'add_homework';

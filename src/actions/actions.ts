@@ -1,4 +1,4 @@
-import { SELECT_CATAGORY,SHOW_POPUP,HIDE_POPUP,SHOW_ERROR,HIDE_ERROR } from './types';
+import { SELECT_CATAGORY,SHOW_POPUP,HIDE_POPUP,SHOW_ERROR,HIDE_ERROR,ADD_HOMEWORK } from './types';
 
 export const selectCatagory = (catagory:string) => (dispatch:any) =>{
     dispatch({
@@ -40,4 +40,13 @@ export const showError = (msg:string)=>(dispatch:any)=>{
             type:HIDE_ERROR
         })
     },5000);
+}
+
+export const addHomework = (homework:any)=>(dispatch:any)=>{
+    dispatch({
+        type:ADD_HOMEWORK,
+        payload:{
+            homework
+        }
+    })
 }
