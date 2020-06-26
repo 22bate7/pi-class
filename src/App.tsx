@@ -1,6 +1,6 @@
 import React,{ Fragment } from 'react';
 import './assets/main.css';
-import './assets/app.scss';
+import styles from './assets/app.module.scss';
 import { BrowserRouter as Router,Route,Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Navbar from './components/layout/Navbar';
@@ -29,7 +29,7 @@ const App:React.FC<Props> = ({ showPopup,catagory:{ selectedCatagory } }) =>{
             <Route exact path="/" component={Dashboard} />
             <Route path="/homeworks/:catagory/:name" component={DisplayDetails} />
           </Switch>
-          <button className="addHomework-btn" onClick={showAddHomework}>
+          <button className={`${styles['addHomework-btn']} addHomework-btn`} onClick={showAddHomework}>
                 <PlusIcon size={30} />
           </button>
           <AddHomework />

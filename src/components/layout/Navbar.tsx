@@ -1,7 +1,7 @@
 import React,{ useState } from 'react';
 import { BookIcon,SearchIcon,PersonIcon } from '@primer/octicons-react';
 import { Link } from 'react-router-dom'
-import '../../assets/navbar.scss';
+import styles from '../../assets/navbar.module.scss';
 // import PropTypes from 'prop-types';
 
 const Navbar:React.FC = () =>{
@@ -25,16 +25,16 @@ const Navbar:React.FC = () =>{
 
     return (
         <nav>
-            <Link to="/" className="logo-text"><BookIcon size={30}/> Homework</Link>
-            <form className="search-box" onSubmit={handleSubmit}>
+            <Link to="/" className={`${styles['logo-text']} logo-text`}><BookIcon size={30}/> Homework</Link>
+            <form className={`${styles['search-box']} search-box`} onSubmit={handleSubmit}>
                 <input type="text" autoComplete="off" placeholder="Search by Class,Subject,Date" name="search" value={search} onChange={handleChange}/>
-                <button type="submit" className="search-btn">
+                <button type="submit" className={`${styles["search-btn"]} search-btn`}>
                     <SearchIcon size={24} />
                 </button>
             </form>
-            <div className="user">
+            <div className={`${styles["user"]} user`}>
                 <span>Logout</span>
-                <PersonIcon size={24} className="profile-photo"/>
+                <PersonIcon size={24} className={`${styles["profile-photo"]} profile-photo`}/>
             </div>
         </nav>
     )

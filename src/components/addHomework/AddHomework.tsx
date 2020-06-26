@@ -1,5 +1,5 @@
 import React,{ useState } from 'react';
-import '../../assets/addHomework.scss';
+import styles from '../../assets/addHomework.module.scss';
 import { XIcon } from '@primer/octicons-react';
 import { connect } from 'react-redux';
 import { hidePopup,showError,addHomework } from '../../actions/actions';
@@ -103,23 +103,23 @@ const AddHomework:React.FC<Props> = (props)=>{
     }
 
     return (
-        <div className={homework.showPopup?'addHomework':'hide'}>
-            <form className="addHomework-form" onSubmit={handleSubmit}>
-                <div className="close-icon" onClick={hideAddHomework}>
+        <div className={homework.showPopup?`${styles.addHomework} addHomework`:`${styles.hide} hide`}>
+            <form className={`${styles['addHomework-form']} addHomework-form`} onSubmit={handleSubmit}>
+                <div className={`${styles['close-icon']} close-icon`} onClick={hideAddHomework}>
                     <XIcon size={24} />
                 </div>
                 {homework.showError.show?<ErrorBox />:''}
                 <h1>Create Assignment</h1>
                 <small>Add Homework / Classwork Details</small>
                 <div className="group">
-                    <select name="standard" className="class-select" value={standard} onChange={handleChange} required>
+                    <select name="standard" className={`${styles["class-select"]} class-select`} value={standard} onChange={handleChange} required>
                         <option>Standard</option>
                         <option value="2nd-A">2nd - A</option>
                         <option value="2nd-B">2nd - B</option>
                         <option value="2nd-C">2nd - C</option>
                         <option value="2nd-D">2nd - D</option>
                     </select>
-                    <select name="subject" className="subject-select" value={subject} onChange={handleChange} required>
+                    <select name="subject" className={`${styles["subject-select"]} subject-select`} value={subject} onChange={handleChange} required>
                         <option>Subject</option>
                         <option value="Computer">Computer</option>
                         <option value="Maths">Maths</option>
@@ -129,7 +129,7 @@ const AddHomework:React.FC<Props> = (props)=>{
                 </div>
                 <input type="text" name="title" placeholder="Title" value={title} onChange={handleChange} required/>
                 <input type="text" name="description" placeholder="Description" value={description} onChange={handleChange} required/>
-                <div className="group">
+                <div className={`${styles.group} group`}>
                     <input type="date" name="dueDate" value={dueDate} onChange={handleChange} required/>
                     <input type="time" name="dueTime" value={dueTime} onChange={handleChange} required/>
                     <input type="file" name="otherFiles" value={otherFiles} onChange={handleChange}/>

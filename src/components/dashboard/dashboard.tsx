@@ -1,6 +1,6 @@
 import React,{ useState } from 'react';
 // import ProtoType from 'prop-types';
-import '../../assets/dashboard.scss';
+import styles from  '../../assets/dashboard.module.scss';
 import { connect } from 'react-redux';
 import { selectCatagory } from '../../actions/actions' ;
 import DisplaySection from '../layout/DisplaySection';
@@ -27,12 +27,12 @@ const Dashboard:React.FC<Props> = ({catagory,selectCatagory})=>{
 
     const displayCatagories = catagories.map((catagory:string)=>{
         return (
-            <span className={catagory===selected.catagory?'selected':''} key={Math.random()} onClick={changeCatagory}>{catagory}</span>
+            <span className={catagory===selected.catagory?`${styles.selected} selected`:''} key={Math.random()} onClick={changeCatagory}>{catagory}</span>
         )
     })
     return (
-        <div className="dashboard">
-            <div className="options">
+        <div className={`${styles.dashboard} dashboard`}>
+            <div className={`${styles.options} options`}>
                 {displayCatagories}
             </div>
             <DisplaySection showView={selected.catagory}/>

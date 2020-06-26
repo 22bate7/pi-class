@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { ChevronRightIcon } from '@primer/octicons-react';
-import '../../assets/displaySection.scss';
-import '../../assets/displayDetails.scss';
+import styles1 from '../../assets/displaySection.module.scss';
+import styles2 from '../../assets/displayDetails.module.scss';
 
 interface Props {
     showView:string,
@@ -21,11 +21,11 @@ const DisplayDetails:React.FC<Props> = ({ match,homework:{homeworks} })=> {
     }) 
 
     return (
-        <div className="section-detail section">
+        <div className={`${styles1.section} ${styles2.section} section`}>
             <h1>Homework of {homeworksOf}</h1>
             {results && results.length>0 ? results.map((result:any)=> (
-                <Link to={`/`} className="part" key={Math.random()}>
-                    <span className="part-title">{ result.title }</span>
+                <Link to={`/`} className={`${styles1.part} part`} key={Math.random()}>
+                    <span className={`${styles1['part-title']} part-title`}>{ result.title }</span>
                     <ChevronRightIcon size={20} />
                 </Link>
             )):<p>No Homework Available</p>}
