@@ -1,0 +1,14 @@
+@import './config.scss';
+
+.section-detail {
+    margin: 20px;
+    padding: 40px;
+    border-radius: 30px;
+    border: 2px solid rgba($color: #000000, $alpha: 0.2);
+    h1 {
+        font-size: 2em;
+        text-align: center;
+        font-weight: bold;
+        color:$primary;
+    }
+}

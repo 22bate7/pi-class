@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { ChevronRightIcon } from '@primer/octicons-react';
 import '../../assets/displaySection.scss';
 
@@ -14,10 +15,10 @@ const DisplaySection:React.FC<Props> = ({ showView,catagory })=> {
         return (
             <div className="section">
                 {catagory.classes.map((standard:string)=>
-                    <div className="part" key={Math.random()}>
+                    <Link to={`/homeworks/class/${standard}`} className="part" key={Math.random()}>
                         <span className="part-title">{ standard }</span>
                         <ChevronRightIcon size={20} />
-                    </div>
+                    </Link>
                 )}
             </div>
         )
@@ -26,10 +27,10 @@ const DisplaySection:React.FC<Props> = ({ showView,catagory })=> {
         return (
             <div className="section">
                 {catagory.subjects.map((subject:string)=>
-                    <div className="part" key={Math.random()}>
+                    <Link to={`/homeworks/subject/${subject}`} className="part" key={Math.random()}>
                         <span className="part-title">{ subject }</span>
                         <ChevronRightIcon size={20} />
-                    </div>
+                    </Link>
                 )}
             </div>
         )

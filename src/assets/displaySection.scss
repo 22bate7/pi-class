@@ -4,11 +4,19 @@
     .part {
         border:1px solid $light-background;
         border-radius: 30px;
-        box-shadow:2px 2px 5px rgba(0,0,0,0.4),
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.4),
         -2px -2px 5px rgba($color: $light-background, $alpha: 0.5);
         cursor: pointer;
         color:$primary;
         padding-left: 4em;
+        transition: background 400ms ease-in-out;
+        &:hover {
+            background-color: #eee;
+        }
+        &:focus {
+            box-shadow:inset 2px 2px 5px rgba(0,0,0,0.4),
+            inset -2px -2px 5px rgba($color: $light-background, $alpha: 0.5);
+        }
     }
 }
 @media(max-width:500px) {

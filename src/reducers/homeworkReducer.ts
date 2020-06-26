@@ -10,31 +10,31 @@ const initState = {
         {
             standard:'2nd-A',
             subject:'Physics',
-            title:'Ex-2 of ch-2',
+            title:'Ex-2 of phy 2a',
+            description:'Try to complete all the sums ',
+            homeworkDue:new Date().toString(),
+            otherFiles:null
+        },
+        {
+            standard:'2nd-B',
+            subject:'Maths',
+            title:'Ex-2 of mth 2b',
+            description:'Try to complete all the sums',
+            homeworkDue:new Date().toString(),
+            otherFiles:null
+        },
+        {
+            standard:'2nd-C',
+            subject:'Computer',
+            title:'Ex-2 of com 2c',
             description:'Try to complete all the sums',
             homeworkDue:new Date().toString(),
             otherFiles:null
         },
         {
             standard:'2nd-A',
-            subject:'Physics',
-            title:'Ex-2 of ch-2',
-            description:'Try to complete all the sums',
-            homeworkDue:new Date().toString(),
-            otherFiles:null
-        },
-        {
-            standard:'2nd-A',
-            subject:'Physics',
-            title:'Ex-2 of ch-2',
-            description:'Try to complete all the sums',
-            homeworkDue:new Date().toString(),
-            otherFiles:null
-        },
-        {
-            standard:'2nd-A',
-            subject:'Physics',
-            title:'Ex-2 of ch-2',
+            subject:'Chemistry',
+            title:'Ex-2 of che 2a',
             description:'Try to complete all the sums',
             homeworkDue:new Date().toString(),
             otherFiles:null
