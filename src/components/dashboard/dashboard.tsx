@@ -3,6 +3,7 @@ import React,{ useState } from 'react';
 import '../../assets/dashboard.scss';
 import { connect } from 'react-redux';
 import { selectCatagory } from '../../actions/actions' ;
+import DisplaySection from '../layout/DisplaySection';
 
 interface Props {
     catagories:string[],
@@ -34,6 +35,7 @@ const Dashboard:React.FC<Props> = ({catagory,selectCatagory})=>{
             <div className="options">
                 {displayCatagories}
             </div>
+            <DisplaySection showView={selected.catagory}/>
         </div>
     )
 }

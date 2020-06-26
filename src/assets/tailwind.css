@@ -53,3 +53,9 @@ nav {
 .error {
     @apply flex justify-center p-2 border-solid border-red-900 border-2 bg-red-100;
 }
+.section {
+    @apply my-4 mx-12;
+}
+.section .part {
+    @apply my-6 p-6 flex justify-between items-center;
+}

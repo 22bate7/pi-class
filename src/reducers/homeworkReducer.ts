@@ -46,7 +46,6 @@ const initState = {
 const homeworkReducer = (state=initState,action:any) =>{
     
     const { type,payload } = action;
-    console.log(payload);
 
     switch (type) {
         case SHOW_POPUP:
