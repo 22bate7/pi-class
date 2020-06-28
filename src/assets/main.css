@@ -14343,6 +14343,10 @@ video {
   transition-delay: 1000ms;
 }
 
+body {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
 nav {
   --bg-opacity: 1;
   background-color: #1a202c;
@@ -14398,9 +14402,9 @@ nav {
 
 .dashboard {
   margin-top: 0.5rem;
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
-  padding: 2.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding: 1rem;
 }
 
 .options {
@@ -14462,7 +14466,8 @@ nav {
   margin: 0;
 }
 
-.addHomework-form input , .addHomework-form select {
+.addHomework-form input,
+.addHomework-form select {
   padding: 0.5rem;
   --bg-opacity: 1;
   background-color: #e2e8f0;
@@ -14506,20 +14511,35 @@ nav {
   background-color: rgba(255, 245, 245, var(--bg-opacity));
 }
 
-.section{
+.section {
   margin-top: 1rem;
   margin-bottom: 1rem;
-  margin-left: 3rem;
-  margin-right: 3rem;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
 }
 
 .section .part {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-  padding: 1.5rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  padding: 0.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.show-homework {
+  margin: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.show-homework .btn button {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
 }
 
 @media (min-width: 640px) {

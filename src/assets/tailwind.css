@@ -2,60 +2,91 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+body {
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
 nav {
     @apply bg-gray-900 text-white p-5 flex items-center justify-around flex-wrap;
 }
+
 .logo-text {
     @apply text-white text-2xl;
 }
+
 .search-box {
     @apply flex align-middle justify-around;
 }
+
 .search-box input {
     @apply py-2 pl-2 pr-5 rounded-lg border-solid border-2 border-gray-600;
 }
+
 .profile-photo {
     @apply p-1 rounded-full bg-white text-black mx-1;
 }
+
 .dashboard {
-    @apply mt-2 mx-6 p-10;
+    @apply mt-2 mx-4 p-4;
 }
+
 .options {
     @apply border-solid border-gray-300 border-b-2 py-2;
 }
+
 .options span {
     @apply mx-5 py-2;
 }
+
 .addHomework-btn {
     @apply flex justify-center items-center p-2 rounded-full;
 }
+
 .addHomework {
     @apply flex z-10 absolute top-0 left-0 right-0 bottom-0 items-center justify-center;
 }
+
 .addHomework-form {
     @apply p-10 flex flex-col justify-center rounded-lg;
 }
+
 .addHomework-form * {
-    @apply my-2 ;
+    @apply my-2;
 }
+
 .addHomework-form small {
     @apply border-solid border-b-2 border-gray-300 m-0;
 }
-.addHomework-form input , .addHomework-form select {
+
+.addHomework-form input,
+.addHomework-form select {
     @apply p-2 bg-gray-300 mx-2 rounded-lg;
 }
+
 .addHomework-form input[type="text"] {
     @apply mr-0;
 }
+
 .addHomework-form button {
     @apply rounded-lg px-5 py-3 text-white border-solid border-2 border-gray-300;
 }
+
 .error {
     @apply flex justify-center p-2 border-solid border-red-900 border-2 bg-red-100;
 }
-.section{
-    @apply my-4 mx-12;
+
+.section {
+    @apply my-4 mx-6;
 }
+
 .section .part {
-    @apply my-6 p-6 flex justify-between items-center;
+    @apply my-1 p-2 flex justify-between items-center;
+}
+
+.show-homework {
+    @apply m-4 p-6 flex justify-center items-center flex-col;
+}
+
+.show-homework .btn button {
+    @apply m-2 p-2 rounded-lg;
 }

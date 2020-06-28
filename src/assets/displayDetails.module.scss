@@ -3,10 +3,23 @@
 .section {
     margin: 20px;
     padding: 40px;
+
     h1 {
         font-size: 2em;
         text-align: center;
         font-weight: bold;
-        color:$primary;
+        color: $primary;
+    }
+
+    .part {
+        border-left: 10px solid $pending-homework !important;
+    }
+
+    .due {
+        border-left-color: $due-homework !important;
+    }
+
+    .done {
+        border-left-color: $done-homework !important;
     }
 }

@@ -1,0 +1,97 @@
+@import "./theme/config.scss";
+
+.main-title {
+    font-weight: bold;
+    font-size: 1.5em;
+    text-align: center;
+    text-transform: uppercase;
+    color: $primary;
+}
+
+.homework {
+    background-color: $addhomework-background;
+    padding: 2em;
+}
+
+.span-title {
+    color: $primary;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.created {
+    display: block;
+    text-align: right;
+}
+
+.section {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    align-items: center;
+}
+
+.title-input {
+    padding: 10px;
+    background-color: $cards-background;
+}
+
+.pending {
+    color: black;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: rgba($color: green, $alpha: .3);
+    border: 2px solid green;
+}
+
+.dueIn {
+    color: black;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: rgba($color: red, $alpha: .3);
+    border: 2px solid red;
+}
+
+.delete {
+    border: 2px solid $delete-btn;
+    transition: background 400ms ease-in-out,
+        color 400ms ease-in-out;
+
+    &:hover {
+        background: $delete-btn;
+        color: white;
+    }
+}
+
+.update {
+    border: 2px solid $update-btn;
+    transition: background 400ms ease-in-out,
+        color 400ms ease-in-out;
+
+    &:hover {
+        background: $update-btn;
+        color: white;
+    }
+}
+
+.hide {
+    display: none;
+}
+
+.done {
+    border: 2px solid $done-btn;
+    transition: background 400ms ease-in-out,
+        color 400ms ease-in-out;
+
+    &:hover {
+        background: $done-btn;
+        color: white;
+    }
+}
+
+@media(max-width:600px) {
+    .show-homework {
+        padding: 10px;
+    }
+}
