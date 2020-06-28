@@ -13,6 +13,7 @@
     "@types/react-dom": "^16.9.8",
     "@types/react-redux": "^7.1.9",
     "@types/react-router-dom": "^5.1.5",
+    "@types/uuid": "^8.0.0",
     "moment": "^2.27.0",
     "node-sass": "^4.14.1",
     "postcss-import": "^12.0.1",
@@ -23,14 +24,15 @@
     "react-scripts": "3.4.1",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "typescript": "^3.7.5"
+    "typescript": "^3.7.5",
+    "uuid": "^8.2.0"
   },
   "scripts": {
     "start": "npm run watch:css && react-scripts start",
-    "build": "npm run build:css react-scripts build",
+    "build": "npm run build:css && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "storybook": "npm run watch:css && start-storybook -p 9009 -s public",
+    "storybook": " npm run watch:css && start-storybook -p 9009 -s public",
     "build-storybook": "npm run build:css && build-storybook -s public",
     "build:css": "postcss src/assets/tailwind.css -o src/assets/main.css",
     "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css"

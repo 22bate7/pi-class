@@ -14397,13 +14397,10 @@ nav {
 }
 
 .dashboard {
-  border-radius: 0.5rem;
-  margin-top: 1.5rem;
+  margin-top: 0.5rem;
   margin-left: 1.5rem;
   margin-right: 1.5rem;
   padding: 2.5rem;
-  border-style: solid;
-  border-width: 2px;
 }
 
 .options {

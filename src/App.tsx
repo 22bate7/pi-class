@@ -9,6 +9,7 @@ import AddHomework from './components/addHomework/AddHomework';
 import { PlusIcon } from '@primer/octicons-react';
 import { showPopup } from './actions/actions';
 import DisplayDetails from './components/layout/DisplayDetails';
+import ShowHomework from './components/layout/showHomework';
 
 interface Props {
   showPopup : any,
@@ -28,6 +29,7 @@ const App:React.FC<Props> = ({ showPopup,catagory:{ selectedCatagory } }) =>{
           <Switch>
             <Route exact path="/" component={Dashboard} />
             <Route path="/homeworks/:catagory/:name" component={DisplayDetails} />
+            <Route path="/homework/:id" component={ShowHomework} />
           </Switch>
           <button className={`${styles['addHomework-btn']} addHomework-btn`} onClick={showAddHomework}>
                 <PlusIcon size={30} />

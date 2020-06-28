@@ -1,4 +1,5 @@
 import { SHOW_POPUP,HIDE_POPUP,SHOW_ERROR,HIDE_ERROR,ADD_HOMEWORK } from '../actions/types';
+import { v4 as id } from 'uuid';
 
 const initState = {
     showPopup : false,
@@ -8,36 +9,44 @@ const initState = {
     },
     homeworks : [
         {
+            createdDate:new Date(),
             standard:'2nd-A',
             subject:'Physics',
             title:'Ex-2 of phy 2a',
             description:'Try to complete all the sums ',
             homeworkDue:new Date().toString(),
-            otherFiles:null
+            otherFiles:null,
+            id:id()
         },
         {
+            createdDate:new Date(),
             standard:'2nd-B',
             subject:'Maths',
             title:'Ex-2 of mth 2b',
             description:'Try to complete all the sums',
             homeworkDue:new Date().toString(),
-            otherFiles:null
+            otherFiles:null,
+            id:id()
         },
         {
+            createdDate:new Date(),
             standard:'2nd-C',
             subject:'Computer',
             title:'Ex-2 of com 2c',
             description:'Try to complete all the sums',
             homeworkDue:new Date().toString(),
-            otherFiles:null
+            otherFiles:null,
+            id:id()
         },
         {
+            createdDate:new Date(),
             standard:'2nd-A',
             subject:'Chemistry',
             title:'Ex-2 of che 2a',
             description:'Try to complete all the sums',
             homeworkDue:new Date().toString(),
-            otherFiles:null
+            otherFiles:null,
+            id:id()
         }
 
     ]

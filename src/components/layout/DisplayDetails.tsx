@@ -24,8 +24,8 @@ const DisplayDetails:React.FC<Props> = ({ match,homework:{homeworks} })=> {
         <div className={`${styles1.section} ${styles2.section} section`}>
             <h1>Homework of {homeworksOf}</h1>
             {results && results.length>0 ? results.map((result:any)=> (
-                <Link to={`/`} className={`${styles1.part} part`} key={Math.random()}>
-                    <span className={`${styles1['part-title']} part-title`}>{ result.title }</span>
+                <Link to={`/homework/${result.id}`} className={`${styles1.part} part`} key={Math.random()}>
+                    <span className={`${styles1['part-title']} part-title`}>{ result.title } | {result.subject}</span>
                     <ChevronRightIcon size={20} />
                 </Link>
             )):<p>No Homework Available</p>}

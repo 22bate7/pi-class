@@ -1,9 +1,10 @@
-@import './config.scss';
+@import './theme/config.scss';
 
 .addHomework {
     opacity: 0;
     animation: showPopup 400ms ease-in-out forwards;
     background-color: rgba($color: #000000, $alpha: 0.6);
+    transition: opacity 400ms ease-in-out;
     @keyframes showPopup {
         0% {
             opacity: 0;

@@ -4,6 +4,7 @@ import { XIcon } from '@primer/octicons-react';
 import { connect } from 'react-redux';
 import { hidePopup,showError,addHomework } from '../../actions/actions';
 import ErrorBox from '../layout/errorBox';
+import { v4 as id } from 'uuid';
 
 interface Props {
     homework:any,
@@ -22,7 +23,9 @@ const AddHomework:React.FC<Props> = (props)=>{
         title:string,
         description:string,
         otherFiles:string,
-        homeworkDue:string
+        homeworkDue:string,
+        id:string,
+        createdDate:Date
     }
 
     const HomeworkInitState:HomeworkDataType = {
@@ -31,7 +34,9 @@ const AddHomework:React.FC<Props> = (props)=>{
         title:'',
         description:'',
         otherFiles:'',
-        homeworkDue:''
+        homeworkDue:'',
+        id:id(),
+        createdDate:new Date()
     }
     
     interface Dues {
@@ -88,12 +93,14 @@ const AddHomework:React.FC<Props> = (props)=>{
             addHomework(homeworkData);
             hideAddHomework();
             setHomeworkData({
+                ...homeworkData,
                 standard:'',
                 subject:'',
                 title:'',
                 description:'',
                 otherFiles:'',
-                homeworkDue:''
+                homeworkDue:'',
+                id:''
             });
             setDues({
                 dueDate:'',
@@ -103,7 +110,8 @@ const AddHomework:React.FC<Props> = (props)=>{
     }
 
     return (
-        <div className={homework.showPopup?`${styles.addHomework} addHomework`:`${styles.hide} hide`}>
+        <div className={homework.showPopup?`${styles.addHomework} ${styles.show} addHomework`:`${styles.hide} hide`}>
+        {/*  <div className={`${styles.addHomework} addHomework`}> */}
             <form className={`${styles['addHomework-form']} addHomework-form`} onSubmit={handleSubmit}>
                 <div className={`${styles['close-icon']} close-icon`} onClick={hideAddHomework}>
                     <XIcon size={24} />
