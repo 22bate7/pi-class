@@ -5,6 +5,9 @@ import { connect } from "react-redux";
 import { hidePopup, showError, addHomework } from "../../actions/actions";
 import ErrorBox from "../layout/errorBox";
 import { v4 as genId } from "uuid";
+import TextInput from "../inputComponents/textInput";
+import TextArea from "../inputComponents/TextArea";
+import FileDateTimeInput from "../inputComponents/FileDateTimeInput";
 
 interface Props {
   homework: any;
@@ -22,9 +25,10 @@ const AddHomework: React.FunctionComponent<Props> = (props) => {
     title: string;
     description: string;
     otherFiles: string;
-    homeworkDue: string;
+    homeworkDue: Date;
     id: string;
     createdDate: Date;
+    isChecked: boolean;
   }
 
   const HomeworkInitState: HomeworkDataType = {
@@ -33,9 +37,10 @@ const AddHomework: React.FunctionComponent<Props> = (props) => {
     title: "",
     description: "",
     otherFiles: "",
-    homeworkDue: "",
+    homeworkDue: new Date(),
     id: genId(),
     createdDate: new Date(),
+    isChecked: false,
   };
 
   interface Dues {
@@ -91,9 +96,7 @@ const AddHomework: React.FunctionComponent<Props> = (props) => {
       console.log(dueDate);
       showError("Please select correct Date");
     } else {
-      console.log(dueDate, dueTime);
-      homeworkData.homeworkDue = homeworkDue.toString();
-      console.log(homeworkData);
+      homeworkData.homeworkDue = homeworkDue;
       addHomework(homeworkData);
       hideAddHomework();
       setHomeworkData({
@@ -103,7 +106,6 @@ const AddHomework: React.FunctionComponent<Props> = (props) => {
         title: "",
         description: "",
         otherFiles: "",
-        homeworkDue: "",
         id: "",
       });
       setDues({
@@ -114,98 +116,102 @@ const AddHomework: React.FunctionComponent<Props> = (props) => {
   };
 
   return (
-    <div
-      className={
-        homework.showPopup
-          ? `${styles.addHomework} ${styles.show} addHomework`
-          : `${styles.hide} hide`
-      }
-    >
-      {/*  <div className={`${styles.addHomework} addHomework`}> */}
-      <form
-        className={`${styles["addHomework-form"]} addHomework-form`}
-        onSubmit={handleSubmit}
-      >
+    <React.Fragment>
+      {homework.showPopup ? (
         <div
-          className={`${styles["close-icon"]} close-icon`}
-          onClick={hideAddHomework}
+          className={
+            homework.showPopup
+              ? `${styles.addHomework} ${styles.show} addHomework`
+              : `${styles.hide} hide`
+          }
         >
-          <XIcon size={24} />
-        </div>
-        {homework.showError.show ? <ErrorBox /> : ""}
-        <h1>Create Assignment</h1>
-        <small>Add Homework / Classwork Details</small>
-        <div className="group">
-          <select
-            name="standard"
-            className={`${styles["class-select"]} class-select`}
-            value={standard}
-            onChange={handleChange}
-            required
+          <form
+            className={`${styles["addHomework-form"]} addHomework-form`}
+            onSubmit={handleSubmit}
           >
-            <option>Standard</option>
-            <option value="2nd-A">2nd - A</option>
-            <option value="2nd-B">2nd - B</option>
-            <option value="2nd-C">2nd - C</option>
-            <option value="2nd-D">2nd - D</option>
-          </select>
-          <select
-            name="subject"
-            className={`${styles["subject-select"]} subject-select`}
-            value={subject}
-            onChange={handleChange}
-            required
-          >
-            <option>Subject</option>
-            <option value="Computer">Computer</option>
-            <option value="Maths">Maths</option>
-            <option value="Physics">Physics</option>
-            <option value="Chemistry">Chemistry</option>
-          </select>
+            <div
+              className={`${styles["close-icon"]} close-icon`}
+              onClick={hideAddHomework}
+            >
+              <XIcon size={24} />
+            </div>
+            {homework.showError.show ? <ErrorBox /> : ""}
+            <h1>Create Assignment</h1>
+            <small>Add Homework / Classwork Details</small>
+            <div className="group">
+              <select
+                name="standard"
+                className={`${styles["class-select"]} class-select`}
+                value={standard}
+                onChange={handleChange}
+                required
+              >
+                <option>Standard</option>
+                <option value="2nd-A">2nd - A</option>
+                <option value="2nd-B">2nd - B</option>
+                <option value="2nd-C">2nd - C</option>
+                <option value="2nd-D">2nd - D</option>
+              </select>
+              <select
+                name="subject"
+                className={`${styles["subject-select"]} subject-select`}
+                value={subject}
+                onChange={handleChange}
+                required
+              >
+                <option>Subject</option>
+                <option value="Computer">Computer</option>
+                <option value="Maths">Maths</option>
+                <option value="Physics">Physics</option>
+                <option value="Chemistry">Chemistry</option>
+              </select>
+            </div>
+            <TextInput
+              name="title"
+              placeholder="Title"
+              value={title}
+              handleChange={handleChange}
+              required={true}
+            />
+            <TextArea
+              name="description"
+              placeholder="Description"
+              value={description}
+              handleChange={handleChange}
+              required={true}
+            />
+            <div className={`${styles.group} group`}>
+              <FileDateTimeInput
+                type="date"
+                name="dueDate"
+                value={dueDate}
+                handleChange={handleChange}
+                required={true}
+              />
+              <FileDateTimeInput
+                type="time"
+                name="dueTime"
+                value={dueTime}
+                handleChange={handleChange}
+                required={true}
+              />
+              <FileDateTimeInput
+                type="file"
+                name="otherFiles"
+                value={otherFiles}
+                handleChange={handleChange}
+                required={false}
+              />
+            </div>
+            <button type="submit" onClick={handleSubmit}>
+              Add Homework
+            </button>
+          </form>
         </div>
-        <input
-          type="text"
-          name="title"
-          placeholder="Title"
-          value={title}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="text"
-          name="description"
-          placeholder="Description"
-          value={description}
-          onChange={handleChange}
-          required
-        />
-        <div className={`${styles.group} group`}>
-          <input
-            type="date"
-            name="dueDate"
-            value={dueDate}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="time"
-            name="dueTime"
-            value={dueTime}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="file"
-            name="otherFiles"
-            value={otherFiles}
-            onChange={handleChange}
-          />
-        </div>
-        <button type="submit" onClick={handleSubmit}>
-          Add Homework
-        </button>
-      </form>
-    </div>
+      ) : (
+        ""
+      )}
+    </React.Fragment>
   );
 };
 

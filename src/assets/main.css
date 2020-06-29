@@ -14467,6 +14467,7 @@ nav {
 }
 
 .addHomework-form input,
+.addHomework-form textarea,
 .addHomework-form select {
   padding: 0.5rem;
   --bg-opacity: 1;

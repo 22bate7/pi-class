@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { ChevronRightIcon } from "@primer/octicons-react";
 import styles1 from "../../assets/displaySection.module.scss";
 import styles2 from "../../assets/displayDetails.module.scss";
+import moment from "moment";
 
 interface Props {
   showView: string;
@@ -29,6 +30,15 @@ const DisplayDetails: React.FunctionComponent<Props> = ({
   return (
     <div className={`${styles1.section} ${styles2.section} section`}>
       <h1>Homework of {homeworksOf}</h1>
+      <div className={styles2.tags}>
+        <span>Date</span>
+        <span>Title</span>
+        <span>Subject</span>
+        <span>Status</span>
+        <span>
+          <ChevronRightIcon size={20} />
+        </span>
+      </div>
       {results && results.length > 0 ? (
         results.map((result: any) => (
           <Link
@@ -42,9 +52,20 @@ const DisplayDetails: React.FunctionComponent<Props> = ({
             }`}
             key={Math.random()}
           >
-            <span className={`${styles1["part-title"]} part-title`}>
-              {result.title} | {result.subject}
+            <span>
+              {moment(result.createdDate).format("MMMM Do YYYY, h:mm:ss a")}
             </span>
+            <span className={`${styles1["part-title"]} part-title`}>
+              {result.title}
+            </span>
+            <span>{result.subject}</span>
+            <p>
+              {result.isChecked
+                ? "Checked"
+                : result.homeworkDue.getTime() - new Date().getTime() >= 0
+                ? "Viewing"
+                : "Due"}
+            </p>
             <ChevronRightIcon size={20} />
           </Link>
         ))
