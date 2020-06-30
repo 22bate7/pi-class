@@ -7,12 +7,12 @@ interface Props {
 }
 
 const ErrorBox: React.FunctionComponent<Props> = ({ msg }) => {
-  return <AlertBox className="error" msg={msg} />;
+  return <AlertBox className="success" msg={msg} />;
 };
 
 const mapStateToProps = (state: any) => {
   return {
-    msg: state.homework.showError.msg,
+    msg: state.homework.showSuccess.msg,
   };
 };
 

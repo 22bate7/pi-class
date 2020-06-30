@@ -6,12 +6,19 @@ import {
   ADD_HOMEWORK,
   MARK_DONE,
   DELETE_HOMEWORK,
+  SHOW_SUCCESS,
+  HIDE_SUCCESS,
+  UPDATE_HOMEWORK,
 } from "../actions/types";
 import { v4 as genId } from "uuid";
 
 const initState = {
   showPopup: false,
   showError: {
+    msg: "",
+    show: false,
+  },
+  showSuccess: {
     msg: "",
     show: false,
   },
@@ -97,6 +104,24 @@ const homeworkReducer = (state = initState, action: any) => {
         },
       };
 
+    case SHOW_SUCCESS:
+      return {
+        ...state,
+        showSuccess: {
+          msg: payload.msg,
+          show: true,
+        },
+      };
+
+    case HIDE_SUCCESS:
+      return {
+        ...state,
+        showSuccess: {
+          msg: "",
+          show: false,
+        },
+      };
+
     case ADD_HOMEWORK:
       const homeworks = [...state.homeworks];
       homeworks.push(payload.homework);
@@ -126,6 +151,20 @@ const homeworkReducer = (state = initState, action: any) => {
       return {
         ...state,
         homeworks: newHomeworks,
+      };
+
+    case UPDATE_HOMEWORK:
+      let { updateId, title, description } = payload;
+      const updatedHomeworks = state.homeworks.map((homework: any) => {
+        if (homework.id === updateId) {
+          homework.title = title;
+          homework.description = description;
+        }
+        return homework;
+      });
+      return {
+        ...state,
+        homeworks: updatedHomeworks,
       };
 
     default:

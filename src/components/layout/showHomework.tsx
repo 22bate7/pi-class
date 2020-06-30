@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import moment from "moment";
 import styles from "../../assets/showDetail.module.scss";
-import { markDone, deleteHomework } from "../../actions/actions";
+import {
+  markDone,
+  deleteHomework,
+  showError,
+  showSuccess,
+  updateHomework,
+} from "../../actions/actions";
 import TextInput from "../inputComponents/textInput";
 import TextArea from "../inputComponents/TextArea";
 import ButtonComponent from "../buttonComponents/button";
+import TitleBox from "../titleBox/title";
+import SuccessBox from "../layout/successBox";
+import ErrorBox from "../layout/errorBox";
 
 interface Props {
   match: any;
@@ -13,6 +22,11 @@ interface Props {
   markDone: any;
   deleteHomework: any;
   history: any;
+  showError: any;
+  showSuccess: any;
+  isError: any;
+  isSuccess: any;
+  updateHomework: any;
 }
 
 const ShowHomework: React.FunctionComponent<Props> = ({
@@ -21,14 +35,53 @@ const ShowHomework: React.FunctionComponent<Props> = ({
   homework: { homeworks },
   markDone,
   deleteHomework,
+  showError,
+  showSuccess,
+  isError,
+  isSuccess,
+  updateHomework,
 }) => {
   const id = match.params.id;
   const foundHomework = homeworks.find((homework: any) => homework.id === id);
+
+  const [homeworkData, setHomeworkData] = useState({
+    title: foundHomework.title,
+    description: foundHomework.description,
+  });
+
+  const { title, description } = homeworkData;
+
+  const handleSubmit = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    if (title.trim() === "") {
+      showError("Please Give Updated Title");
+    } else if (description.trim() === "") {
+      showError("Please Give Updated Description");
+    } else {
+      showSuccess("Homework Updated");
+    }
+    updateHomework({ ...homeworkData, id });
+  };
+  const handleChange = (e: any) => {
+    setHomeworkData({
+      ...homeworkData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
-    <div className={`${styles["show-homework"]} show-homework`}>
+    <form
+      className={`${styles["show-homework"]} show-homework`}
+      onSubmit={handleSubmit}
+    >
       {foundHomework ? (
         <div className={styles.homework + " homework"}>
-          <h1 className={styles["main-title"]}>{foundHomework.title}</h1>
+          <TitleBox
+            text={foundHomework.title}
+            className={styles["main-title"]}
+          />
+          {isError.show ? <ErrorBox /> : ""}
+          {isSuccess.show ? <SuccessBox /> : ""}
           <small className={styles.created}>
             Created at{" "}
             {moment(foundHomework.createdDate).format(
@@ -40,8 +93,8 @@ const ShowHomework: React.FunctionComponent<Props> = ({
             <TextInput
               name="title"
               placeholder="Title"
-              value={foundHomework.title}
-              handleChange={() => {}}
+              value={title}
+              handleChange={handleChange}
               required={true}
               disabled={
                 foundHomework.homeworkDue.getTime() - new Date().getTime() >= 0
@@ -64,8 +117,8 @@ const ShowHomework: React.FunctionComponent<Props> = ({
             <TextArea
               name="description"
               placeholder="Description"
-              value={foundHomework.description}
-              handleChange={() => {}}
+              value={description}
+              handleChange={handleChange}
               required={true}
               disabled={
                 foundHomework.homeworkDue.getTime() - new Date().getTime() >= 0
@@ -109,6 +162,7 @@ const ShowHomework: React.FunctionComponent<Props> = ({
               text={"Delete"}
             />
             <button
+              type="submit"
               className={`${[styles.update]} ${
                 foundHomework.isChecked ||
                 foundHomework.homeworkDue.getTime() - new Date().getTime() <= 0
@@ -132,17 +186,22 @@ const ShowHomework: React.FunctionComponent<Props> = ({
       ) : (
         <p>No homework found....!!!</p>
       )}
-    </div>
+    </form>
   );
 };
 
 const mapStateToProps = (state: any) => {
   return {
     homework: state.homework,
+    isError: state.homework.showError,
+    isSuccess: state.homework.showSuccess,
   };
 };
 
 export default connect(mapStateToProps, {
   markDone,
   deleteHomework,
+  showError,
+  showSuccess,
+  updateHomework,
 })(ShowHomework);

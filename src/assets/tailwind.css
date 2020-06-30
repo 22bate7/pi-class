@@ -18,7 +18,7 @@ nav {
     @apply flex align-middle justify-around;
 }
 
-.search-box input {
+.search-input {
     @apply py-2 pl-2 pr-5 rounded-lg border-solid border-2 border-gray-600;
 }
 
@@ -73,7 +73,11 @@ nav {
 }
 
 .error {
-    @apply flex justify-center p-2 border-solid border-red-900 border-2 bg-red-100;
+    @apply flex justify-center p-2 border-solid border-red-900 border-2 bg-red-300 text-red-900;
+}
+
+.success {
+    @apply flex justify-center p-2 border-solid border-green-600 border-2 bg-green-300 text-green-900;
 }
 
 .section {

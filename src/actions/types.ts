@@ -6,3 +6,6 @@ export const HIDE_ERROR = "hide_error";
 export const ADD_HOMEWORK = "add_homework";
 export const MARK_DONE = "mark_done";
 export const DELETE_HOMEWORK = "delete_homework";
+export const SHOW_SUCCESS = "show_success";
+export const HIDE_SUCCESS = "hide_success";
+export const UPDATE_HOMEWORK = "update_homework";

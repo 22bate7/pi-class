@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BookIcon, SearchIcon, PersonIcon } from "@primer/octicons-react";
 import { Link } from "react-router-dom";
 import styles from "../../assets/navbar.module.scss";
-// import PropTypes from 'prop-types';
+import TextInput from "../inputComponents/textInput";
 
 const Navbar: React.FunctionComponent = () => {
   const [searchData, setSearchData] = useState({
@@ -31,13 +31,14 @@ const Navbar: React.FunctionComponent = () => {
         className={`${styles["search-box"]} search-box`}
         onSubmit={handleSubmit}
       >
-        <input
-          type="text"
-          autoComplete="off"
-          placeholder="Search by Class,Subject,Date"
+        <TextInput
           name="search"
+          placeholder="Search by Class,Subject,Date"
           value={search}
-          onChange={handleChange}
+          handleChange={handleChange}
+          disabled={false}
+          className="search-input"
+          required={false}
         />
         <button type="submit" className={`${styles["search-btn"]} search-btn`}>
           <SearchIcon size={24} />
