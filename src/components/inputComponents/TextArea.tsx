@@ -6,6 +6,8 @@ interface Props {
   placeholder: string;
   value: string;
   required: boolean;
+  disabled: boolean;
+  className: string;
 }
 
 const TextArea: React.FunctionComponent<Props> = ({
@@ -14,6 +16,8 @@ const TextArea: React.FunctionComponent<Props> = ({
   placeholder,
   value,
   required,
+  disabled,
+  className,
 }) => {
   const handleInput = (e: { target: { value: any } }) => {
     handleChange(e);
@@ -27,6 +31,8 @@ const TextArea: React.FunctionComponent<Props> = ({
         placeholder={placeholder}
         value={value}
         required={required}
+        disabled={disabled}
+        className={className}
       ></textarea>
     </React.Fragment>
   );

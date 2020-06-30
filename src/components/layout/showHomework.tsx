@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 import moment from "moment";
 import styles from "../../assets/showDetail.module.scss";
 import { markDone, deleteHomework } from "../../actions/actions";
+import TextInput from "../inputComponents/textInput";
+import TextArea from "../inputComponents/TextArea";
+import ButtonComponent from "../buttonComponents/button";
 
 interface Props {
   match: any;
@@ -34,16 +37,18 @@ const ShowHomework: React.FunctionComponent<Props> = ({
           </small>
           <div className={styles.section + " section title"}>
             <span className={styles["span-title"]}>Title</span>
-            <input
-              className={styles["title-input"]}
-              type="text"
+            <TextInput
+              name="title"
+              placeholder="Title"
               value={foundHomework.title}
-              onChange={() => {}}
+              handleChange={() => {}}
+              required={true}
               disabled={
                 foundHomework.homeworkDue.getTime() - new Date().getTime() >= 0
                   ? false
                   : true
               }
+              className={styles["title-input"]}
             />
           </div>
           <div className={styles.section + " section std"}>
@@ -56,15 +61,18 @@ const ShowHomework: React.FunctionComponent<Props> = ({
           </div>
           <div className={styles.section + " section description"}>
             <span className={styles["span-title"]}>Description</span>
-            <textarea
-              className={styles["title-input"]}
+            <TextArea
+              name="description"
+              placeholder="Description"
               value={foundHomework.description}
-              onChange={() => {}}
+              handleChange={() => {}}
+              required={true}
               disabled={
                 foundHomework.homeworkDue.getTime() - new Date().getTime() >= 0
                   ? false
                   : true
               }
+              className={styles["title-input"]}
             />
           </div>
           <div
@@ -92,35 +100,33 @@ const ShowHomework: React.FunctionComponent<Props> = ({
             Homework Checked
           </p>
           <div className="btn">
-            <button
-              className={`${[styles.delete]}`}
-              onClick={() => {
+            <ButtonComponent
+              className={styles.delete + " delete"}
+              handleClick={() => {
                 deleteHomework(id);
                 history.push("/");
               }}
-            >
-              Delete
-            </button>
+              text={"Delete"}
+            />
             <button
               className={`${[styles.update]} ${
                 foundHomework.isChecked ||
                 foundHomework.homeworkDue.getTime() - new Date().getTime() <= 0
                   ? styles.hide
                   : ""
-              }`}
+              } update`}
             >
               Update
             </button>
-            <button
+            <ButtonComponent
               className={`${[styles.done]} ${
                 foundHomework.isChecked ? styles.hide : ""
-              }`}
-              onClick={() => {
+              } done`}
+              handleClick={() => {
                 markDone(id);
               }}
-            >
-              Mark as Checked
-            </button>
+              text={"Mark as Checked"}
+            />
           </div>
         </div>
       ) : (

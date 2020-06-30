@@ -6,6 +6,7 @@ interface Props {
   type: string;
   value: string;
   required: boolean;
+  className: string;
 }
 
 const FileDateTimeInput: React.FunctionComponent<Props> = ({
@@ -14,6 +15,7 @@ const FileDateTimeInput: React.FunctionComponent<Props> = ({
   value,
   type,
   required,
+  className,
 }) => {
   const handleInput = (e: { target: { value: any } }) => {
     handleChange(e);
@@ -27,6 +29,7 @@ const FileDateTimeInput: React.FunctionComponent<Props> = ({
         onChange={handleInput}
         value={value}
         required={required}
+        className={className}
       />
     </React.Fragment>
   );

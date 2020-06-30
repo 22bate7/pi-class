@@ -34,7 +34,7 @@ const App: React.FC<Props> = ({
           <Route path="/homework/:id" component={ShowHomework} />
         </Switch>
         <button
-          className={`${styles["addHomework-btn"]} addHomework-btn`}
+          className={`${styles["addHomework-btn-floating"]} addHomework-btn-floating`}
           onClick={showAddHomework}
         >
           <PlusIcon size={30} />

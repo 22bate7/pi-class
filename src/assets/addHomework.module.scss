@@ -5,37 +5,37 @@
     animation: showPopup 400ms ease-in-out forwards;
     background-color: rgba($color: #000000, $alpha: 0.6);
     transition: opacity 400ms ease-in-out;
+
     @keyframes showPopup {
         0% {
             opacity: 0;
-        }100% {
+        }
+
+        100% {
             opacity: 1;
         }
     }
+
     .addHomework-form {
         background-color: $light-background;
         width: 50vw;
         min-width: 300px;
         position: relative;
+
         .close-icon {
             position: absolute;
             top: 2px;
             right: 10px;
             cursor: pointer;
         }
-        button {
-            background-color: $dark-background;
-            align-self: center;
-            transition: background 400ms ease-in-out;
-            &:hover {
-                background-color: #333;
-            }
-        }
-        input , select {
+
+        input,
+        select {
             &:focus {
                 background-color: #eee;
             }
         }
+
         input[type="file"] {
             max-width: 200px;
         }
@@ -47,6 +47,17 @@
         }
     }
 }
+
+.addHomework-btn {
+    background-color: $dark-background;
+    align-self: center;
+    transition: background 400ms ease-in-out;
+
+    &:hover {
+        background-color: #333;
+    }
+}
+
 .hide {
     opacity: 0;
     display: none;

@@ -22,7 +22,7 @@ const initState = {
       subject: "Physics",
       title: "Ex-2 of phy 2a",
       description: "Try to complete all the sums ",
-      homeworkDue: new Date("2020-06-29T22:50:00"),
+      homeworkDue: new Date("2020-06-30T22:50:00"),
       otherFiles: null,
       id: "1",
       isChecked: false,

@@ -6,6 +6,8 @@ interface Props {
   placeholder: string;
   value: string;
   required: boolean;
+  disabled: boolean;
+  className: string;
 }
 
 const TextInput: React.FunctionComponent<Props> = ({
@@ -14,6 +16,8 @@ const TextInput: React.FunctionComponent<Props> = ({
   placeholder,
   value,
   required,
+  disabled,
+  className,
 }) => {
   const handleInput = (e: { target: { value: any } }) => {
     handleChange(e);
@@ -28,6 +32,8 @@ const TextInput: React.FunctionComponent<Props> = ({
         placeholder={placeholder}
         value={value}
         required={required}
+        disabled={disabled}
+        className={className}
       />
     </React.Fragment>
   );

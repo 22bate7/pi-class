@@ -38,7 +38,7 @@ nav {
     @apply mx-5 py-2;
 }
 
-.addHomework-btn {
+.addHomework-btn-floating {
     @apply flex justify-center items-center p-2 rounded-full;
 }
 
@@ -58,8 +58,8 @@ nav {
     @apply border-solid border-b-2 border-gray-300 m-0;
 }
 
-.addHomework-form input,
-.addHomework-form textarea,
+.input,
+.textarea,
 .addHomework-form select {
     @apply p-2 bg-gray-300 mx-2 rounded-lg;
 }
@@ -68,7 +68,7 @@ nav {
     @apply mr-0;
 }
 
-.addHomework-form button {
+.addHomework-btn {
     @apply rounded-lg px-5 py-3 text-white border-solid border-2 border-gray-300;
 }
 
@@ -88,6 +88,8 @@ nav {
     @apply m-4 p-6 flex justify-center items-center flex-col;
 }
 
-.show-homework .btn button {
+.delete,
+.done,
+.update {
     @apply m-2 p-2 rounded-lg;
 }

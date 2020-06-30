@@ -14424,7 +14424,7 @@ nav {
   padding-bottom: 0.5rem;
 }
 
-.addHomework-btn {
+.addHomework-btn-floating {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14466,8 +14466,8 @@ nav {
   margin: 0;
 }
 
-.addHomework-form input,
-.addHomework-form textarea,
+.input,
+.textarea,
 .addHomework-form select {
   padding: 0.5rem;
   --bg-opacity: 1;
@@ -14482,7 +14482,7 @@ nav {
   margin-right: 0;
 }
 
-.addHomework-form button {
+.addHomework-btn {
   border-radius: 0.5rem;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
@@ -14537,7 +14537,9 @@ nav {
   flex-direction: column;
 }
 
-.show-homework .btn button {
+.delete,
+.done,
+.update {
   margin: 0.5rem;
   padding: 0.5rem;
   border-radius: 0.5rem;

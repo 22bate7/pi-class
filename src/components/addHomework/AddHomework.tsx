@@ -8,6 +8,7 @@ import { v4 as genId } from "uuid";
 import TextInput from "../inputComponents/textInput";
 import TextArea from "../inputComponents/TextArea";
 import FileDateTimeInput from "../inputComponents/FileDateTimeInput";
+import ButtonComponent from "../buttonComponents/button";
 
 interface Props {
   homework: any;
@@ -172,6 +173,8 @@ const AddHomework: React.FunctionComponent<Props> = (props) => {
               value={title}
               handleChange={handleChange}
               required={true}
+              disabled={false}
+              className="input"
             />
             <TextArea
               name="description"
@@ -179,6 +182,8 @@ const AddHomework: React.FunctionComponent<Props> = (props) => {
               value={description}
               handleChange={handleChange}
               required={true}
+              disabled={false}
+              className="textarea"
             />
             <div className={`${styles.group} group`}>
               <FileDateTimeInput
@@ -187,6 +192,7 @@ const AddHomework: React.FunctionComponent<Props> = (props) => {
                 value={dueDate}
                 handleChange={handleChange}
                 required={true}
+                className="input"
               />
               <FileDateTimeInput
                 type="time"
@@ -194,6 +200,7 @@ const AddHomework: React.FunctionComponent<Props> = (props) => {
                 value={dueTime}
                 handleChange={handleChange}
                 required={true}
+                className="input"
               />
               <FileDateTimeInput
                 type="file"
@@ -201,11 +208,14 @@ const AddHomework: React.FunctionComponent<Props> = (props) => {
                 value={otherFiles}
                 handleChange={handleChange}
                 required={false}
+                className="input"
               />
             </div>
-            <button type="submit" onClick={handleSubmit}>
-              Add Homework
-            </button>
+            <ButtonComponent
+              className={styles["addHomework-btn"] + " addHomework-btn"}
+              handleClick={handleSubmit}
+              text={"Add Homework"}
+            />
           </form>
         </div>
       ) : (
