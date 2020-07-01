@@ -1,7 +1,7 @@
 import React from 'react';
 import TitleBox from '../components/titleBox/title';
 import '../assets/main.css';
-import styles from '../assets/showDetail.module.scss';
+import styles from '../assets/theme/title.module.scss';
 
 export default {
     title: 'Title box',

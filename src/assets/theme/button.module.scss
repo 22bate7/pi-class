@@ -1,0 +1,45 @@
+@import './config.scss';
+
+.addHomework-btn {
+    background-color: $dark-background;
+    align-self: center;
+    transition: background 400ms ease-in-out;
+
+    &:hover {
+        background-color: #333;
+    }
+}
+
+.delete {
+    border: 2px solid $delete-btn;
+    transition: background 400ms ease-in-out,
+        color 400ms ease-in-out;
+
+    &:hover {
+        background: $delete-btn;
+        color: white;
+    }
+}
+
+.update {
+    border: 2px solid $update-btn;
+    transition: background 400ms ease-in-out,
+        color 400ms ease-in-out;
+
+    &:hover {
+        background: $update-btn;
+        color: white;
+    }
+}
+
+
+.done {
+    border: 2px solid $done-btn;
+    transition: background 400ms ease-in-out,
+        color 400ms ease-in-out;
+
+    &:hover {
+        background: $done-btn;
+        color: white;
+    }
+}

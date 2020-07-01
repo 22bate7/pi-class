@@ -1,16 +1,10 @@
 @import './theme/config.scss';
 
 .section {
-    margin: 20px;
+    margin: 40px 20px;
     padding: 40px;
-
-    h1 {
-        font-size: 2em;
-        text-align: center;
-        font-weight: bold;
-        color: $primary;
-        margin-bottom: 10px;
-    }
+    position: relative;
+    background-color: $light-background;
 
     .part {
         display: grid;

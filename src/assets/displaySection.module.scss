@@ -1,6 +1,8 @@
 @import './theme/config.scss';
 
 .section {
+    position: relative;
+
     .part {
         border: 1px solid $light-background;
         border-radius: 5px;

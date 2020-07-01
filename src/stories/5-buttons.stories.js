@@ -1,8 +1,7 @@
 import React from 'react';
 import ButtonComponent from '../components/buttonComponents/button';
 import '../assets/main.css';
-import styles from '../assets/showDetail.module.scss';
-import styles1 from '../assets/addHomework.module.scss';
+import styles from '../assets/theme/button.module.scss';
 
 export default {
     title: 'Buttons',
@@ -10,7 +9,7 @@ export default {
 }
 
 export const AddHomeworkBtn = () => < ButtonComponent className = {
-    `${styles1['addHomework-btn']} addHomework-btn`
+    `${styles['addHomework-btn']} addHomework-btn`
 }
 text = {
     'Add Homework'

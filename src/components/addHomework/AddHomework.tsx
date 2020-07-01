@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "../../assets/addHomework.module.scss";
+import styles1 from "../../assets/theme/button.module.scss";
 import { XIcon } from "@primer/octicons-react";
 import { connect } from "react-redux";
 import { hidePopup, showError, addHomework } from "../../actions/actions";
@@ -212,7 +213,7 @@ const AddHomework: React.FunctionComponent<Props> = (props) => {
               />
             </div>
             <ButtonComponent
-              className={styles["addHomework-btn"] + " addHomework-btn"}
+              className={styles1["addHomework-btn"] + " addHomework-btn"}
               handleClick={handleSubmit}
               text={"Add Homework"}
             />

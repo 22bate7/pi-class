@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { ChevronRightIcon } from "@primer/octicons-react";
 import styles1 from "../../assets/displaySection.module.scss";
 import styles2 from "../../assets/displayDetails.module.scss";
+import styles from "../../assets/theme/title.module.scss";
+import TitleBox from "../titleBox/title";
 import moment from "moment";
 
 interface Props {
@@ -29,7 +31,10 @@ const DisplayDetails: React.FunctionComponent<Props> = ({
 
   return (
     <div className={`${styles1.section} ${styles2.section} section`}>
-      <h1>Homework of {homeworksOf}</h1>
+      <TitleBox
+        text={`Homework of ${homeworksOf}`}
+        className={styles["main-title"]}
+      />
       <div className={styles2.tags}>
         <span>Date</span>
         <span>Title</span>

@@ -48,16 +48,6 @@
     }
 }
 
-.addHomework-btn {
-    background-color: $dark-background;
-    align-self: center;
-    transition: background 400ms ease-in-out;
-
-    &:hover {
-        background-color: #333;
-    }
-}
-
 .hide {
     opacity: 0;
     display: none;

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import moment from "moment";
 import styles from "../../assets/showDetail.module.scss";
+import styles1 from "../../assets/theme/button.module.scss";
+import styles2 from "../../assets/theme/title.module.scss";
 import {
   markDone,
   deleteHomework,
@@ -78,7 +80,7 @@ const ShowHomework: React.FunctionComponent<Props> = ({
         <div className={styles.homework + " homework"}>
           <TitleBox
             text={foundHomework.title}
-            className={styles["main-title"]}
+            className={styles2["main-title"]}
           />
           {isError.show ? <ErrorBox /> : ""}
           {isSuccess.show ? <SuccessBox /> : ""}
@@ -154,7 +156,7 @@ const ShowHomework: React.FunctionComponent<Props> = ({
           </p>
           <div className="btn">
             <ButtonComponent
-              className={styles.delete + " delete"}
+              className={styles1.delete + " delete"}
               handleClick={() => {
                 deleteHomework(id);
                 history.push("/");
@@ -163,7 +165,7 @@ const ShowHomework: React.FunctionComponent<Props> = ({
             />
             <button
               type="submit"
-              className={`${[styles.update]} ${
+              className={`${[styles1.update]} ${
                 foundHomework.isChecked ||
                 foundHomework.homeworkDue.getTime() - new Date().getTime() <= 0
                   ? styles.hide
@@ -173,7 +175,7 @@ const ShowHomework: React.FunctionComponent<Props> = ({
               Update
             </button>
             <ButtonComponent
-              className={`${[styles.done]} ${
+              className={`${[styles1.done]} ${
                 foundHomework.isChecked ? styles.hide : ""
               } done`}
               handleClick={() => {
