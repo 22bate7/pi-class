@@ -1,0 +1,32 @@
+@import './theme/config.scss';
+
+.section {
+    margin: 40px 20px;
+    padding: 40px;
+    position: relative;
+    background-color: $light-background;
+
+    .part {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        place-items: center;
+        border-left: 10px solid $pending-homework !important;
+    }
+
+    .tags {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        place-items: center;
+        padding-bottom: 10px;
+        color: #000;
+        font-weight: bold;
+    }
+
+    .due {
+        border-left-color: $due-homework !important;
+    }
+
+    .done {
+        border-left-color: $done-homework !important;
+    }
+}

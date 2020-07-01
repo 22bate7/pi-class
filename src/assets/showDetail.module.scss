@@ -1,0 +1,61 @@
+@import "./theme/config.scss";
+
+.show-homework {
+    position: relative;
+}
+
+
+.homework {
+    background-color: $addhomework-background;
+    padding: 2em;
+}
+
+.span-title {
+    color: $primary;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.created {
+    display: block;
+    text-align: right;
+}
+
+.section {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    align-items: center;
+}
+
+.title-input {
+    padding: 10px;
+    background-color: $cards-background;
+}
+
+.pending {
+    color: black;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: rgba($color: green, $alpha: .3);
+    border: 2px solid green;
+}
+
+.dueIn {
+    color: black;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: rgba($color: red, $alpha: .3);
+    border: 2px solid red;
+}
+
+.hide {
+    display: none;
+}
+
+@media(max-width:600px) {
+    .show-homework {
+        padding: 10px;
+    }
+}

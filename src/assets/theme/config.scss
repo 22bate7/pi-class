@@ -1,0 +1,30 @@
+$primary:#f87060;
+$dark-background:#4a4a4a;
+$light-background:#f8f8f8;
+$delete-btn:#ff0000;
+$normal-btn:$dark-background;
+$normal-btn-hover:#222;
+$done-btn:green;
+$update-btn:$dark-background;
+$cards-background:#eee;
+$cards-hover-backgroud:#ddd;
+$addhomework-background:#fff;
+$pending-homework:$primary;
+$due-homework:#cccc0d;
+$done-homework:green;
+
+@mixin center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin navHover {
+    color: $light-background;
+    transition: color 400ms ease-in-out;
+
+    &:hover {
+        color: $primary;
+        cursor: pointer;
+    }
+}

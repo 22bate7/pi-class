@@ -1,0 +1,62 @@
+@import './config.scss';
+
+nav {
+    background-color: $dark-background;
+
+    .search-box {
+        @include center();
+        position: relative;
+
+        input {
+            width: 40vw;
+            max-width: 300px;
+            background-color: $light-background;
+            // border: 2px solid $dark-background;
+            transition: border-color 200ms ease-in-out;
+            outline: none;
+
+            &::placeholder {
+                font-size: 0.8rem;
+                color: #333;
+            }
+
+            &:focus {
+                border-color: $primary;
+                color: $dark-background;
+            }
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 10px;
+            margin-left: 10px;
+            cursor: pointer;
+
+            svg {
+                fill: $dark-background;
+            }
+        }
+    }
+
+    .logo-text {
+        @include navHover();
+    }
+
+    .user {
+        @include navHover();
+    }
+
+    @media(max-width:500px) {
+        justify-content: center;
+        flex-direction: column;
+
+        .search-box {
+            margin: 10px;
+            width: 70%;
+
+            input {
+                width: 100%;
+            }
+        }
+    }
+}

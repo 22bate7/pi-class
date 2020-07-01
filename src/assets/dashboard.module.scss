@@ -1,0 +1,42 @@
+@import './theme/config.scss';
+
+.dashboard {
+    border-radius: 30px;
+    margin-bottom: 20px;
+    span {
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    span.selected {
+        position: relative;
+        color: $primary;
+        &::before {
+            position: absolute;
+            content: '';
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            width: 0px;
+            background-color: $primary;
+            animation: animate 500ms ease-in-out forwards;
+        }
+        @keyframes animate {
+            0% {
+                width: 0px;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+    }
+    
+    @media(max-width:500px) {
+        .options {
+            display: flex;
+            justify-content: space-evenly;
+            padding: 0;
+        }
+    }
+}
