@@ -18,6 +18,7 @@ import TitleBox from "../TitleBox/Title";
 import SuccessBox from "../Layout/SuccessBox";
 import ErrorBox from "../Layout/ErrorBox";
 import classNames from "classnames";
+import { isDue } from '../utils/utils';
 
 interface Props {
   match: any;
@@ -100,7 +101,7 @@ const ShowHomework: React.FunctionComponent<Props> = ({
               handleChange={handleChange}
               required={true}
               disabled={
-                foundHomework.homeworkDue.getTime() - new Date().getTime() >= 0
+                isDue(foundHomework.homeworkDue)
                   ? false
                   : true
               }
@@ -126,7 +127,7 @@ const ShowHomework: React.FunctionComponent<Props> = ({
               handleChange={handleChange}
               required={true}
               disabled={
-                foundHomework.homeworkDue.getTime() - new Date().getTime() >= 0
+                isDue(foundHomework.homeworkDue)
                   ? false
                   : true
               }
@@ -135,13 +136,13 @@ const ShowHomework: React.FunctionComponent<Props> = ({
           </div>
           <div
             className={`${styles.section} section ${
-              foundHomework.homeworkDue.getTime() - new Date().getTime() >= 0
+              isDue(foundHomework.homeworkDue)
                 ? styles.pending
                 : styles.dueIn
             } ${foundHomework.isChecked ? styles.hide : ""}`}
           >
             <p>
-              {foundHomework.homeworkDue.getTime() - new Date().getTime() >= 0
+              {isDue(foundHomework.homeworkDue)
                 ? `Homework Due :  ${moment(
                     foundHomework.homeworkDue
                   ).fromNow()} (on ${moment(foundHomework.homeworkDue).format(
@@ -175,7 +176,7 @@ const ShowHomework: React.FunctionComponent<Props> = ({
             handleClick={handleSubmit}
               className={`update outline-btn ${
                 foundHomework.isChecked ||
-                foundHomework.homeworkDue.getTime() - new Date().getTime() <= 0
+                !isDue(foundHomework.homeworkDue)
                   ? styles.hide
                   : ""
               } update`}
