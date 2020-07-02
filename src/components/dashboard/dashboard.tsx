@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-// import ProtoType from 'prop-types';
 import styles from "../../assets/dashboard.module.scss";
 import { connect } from "react-redux";
 import { selectCatagory } from "../../actions/actions";
-import DisplaySection from "../layout/DisplaySection";
+import DisplaySection from "../Layout/DisplaySection";
+import classNames from "classnames";
 
 interface Props {
   catagories: string[];
@@ -42,16 +42,14 @@ const Dashboard: React.FunctionComponent<Props> = ({
     );
   });
   return (
-    <div className={`${styles.dashboard} dashboard`}>
-      <div className={`${styles.options} options`}>{displayCatagories}</div>
+    <div className={classNames(styles.dashboard, "dashboard")}>
+      <div className={classNames(styles.options, "options")}>
+        {displayCatagories}
+      </div>
       <DisplaySection showView={selected.catagory} />
     </div>
   );
 };
-
-// Dashboard.protoType = {
-
-// }
 
 const mapStateToProps = (state: any) => {
   return {

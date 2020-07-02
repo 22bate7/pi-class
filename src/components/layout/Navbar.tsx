@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { BookIcon, SearchIcon, PersonIcon } from "@primer/octicons-react";
+import { BookIcon, SearchIcon } from "@primer/octicons-react";
 import { Link } from "react-router-dom";
 import styles from "../../assets/theme/navbar.module.scss";
-import TextInput from "../inputComponents/textInput";
+import TextInput from "../InputComponents/TextInput";
+import classNames from "classnames";
 
 const Navbar: React.FunctionComponent = () => {
   const [searchData, setSearchData] = useState({
@@ -24,11 +25,11 @@ const Navbar: React.FunctionComponent = () => {
 
   return (
     <nav>
-      <Link to="/" className={`${styles["logo-text"]} logo-text`}>
+      <Link to="/" className={classNames(styles["logo-text"], "logo-text")}>
         <BookIcon size={30} /> Homework
       </Link>
       <form
-        className={`${styles["search-box"]} search-box`}
+        className={classNames(styles["search-box"], "search-box")}
         onSubmit={handleSubmit}
       >
         <TextInput
@@ -37,20 +38,16 @@ const Navbar: React.FunctionComponent = () => {
           value={search}
           handleChange={handleChange}
           disabled={false}
-          className="search-input"
+          className={classNames("search-input")}
           required={false}
         />
-        <button type="submit" className={`${styles["search-btn"]} search-btn`}>
+        <button
+          type="submit"
+          className={classNames(styles["search-btn"], "search-btn")}
+        >
           <SearchIcon size={24} />
         </button>
       </form>
-      <div className={`${styles["user"]} user`}>
-        <span>Logout</span>
-        <PersonIcon
-          size={24}
-          className={`${styles["profile-photo"]} profile-photo`}
-        />
-      </div>
     </nav>
   );
 };

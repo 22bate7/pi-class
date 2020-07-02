@@ -5,8 +5,9 @@ import { ChevronRightIcon } from "@primer/octicons-react";
 import styles1 from "../../assets/displaySection.module.scss";
 import styles2 from "../../assets/displayDetails.module.scss";
 import styles from "../../assets/theme/title.module.scss";
-import TitleBox from "../titleBox/title";
+import TitleBox from "../TitleBox/Title";
 import moment from "moment";
+import classNames from "classnames";
 
 interface Props {
   showView: string;
@@ -33,7 +34,7 @@ const DisplayDetails: React.FunctionComponent<Props> = ({
     <div className={`${styles1.section} ${styles2.section} section`}>
       <TitleBox
         text={`Homework of ${homeworksOf}`}
-        className={styles["main-title"]}
+        className={classNames(styles["main-title"])}
       />
       <div className={styles2.tags}>
         <span>Date</span>
@@ -60,7 +61,7 @@ const DisplayDetails: React.FunctionComponent<Props> = ({
             <span>
               {moment(result.createdDate).format("MMMM Do YYYY, h:mm:ss a")}
             </span>
-            <span className={`${styles1["part-title"]} part-title`}>
+            <span className={classNames(styles1["part-title"], "part-title")}>
               {result.title}
             </span>
             <span>{result.subject}</span>

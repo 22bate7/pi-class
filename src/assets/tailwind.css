@@ -22,10 +22,6 @@ nav {
     @apply py-2 pl-2 pr-5 rounded-lg border-solid border-2 border-gray-600;
 }
 
-.profile-photo {
-    @apply p-1 rounded-full bg-white text-black mx-1;
-}
-
 .dashboard {
     @apply mt-2 mx-4 p-4;
 }
@@ -38,7 +34,7 @@ nav {
     @apply mx-5 py-2;
 }
 
-.addHomework-btn-floating {
+.btn-floating {
     @apply flex justify-center items-center p-2 rounded-full;
 }
 
@@ -68,7 +64,7 @@ nav {
     @apply mr-0;
 }
 
-.addHomework-btn {
+.button {
     @apply rounded-lg px-5 py-3 text-white border-solid border-2 border-gray-300;
 }
 

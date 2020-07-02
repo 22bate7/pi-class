@@ -1,6 +1,14 @@
 @import './config.scss';
 
-.addHomework-btn {
+.btn-floating {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color: $primary;
+    background-color: $dark-background;
+}
+
+.button {
     background-color: $dark-background;
     align-self: center;
     transition: background 400ms ease-in-out;
@@ -10,10 +18,14 @@
     }
 }
 
-.delete {
-    border: 2px solid $delete-btn;
+.outline-btn {
+    border: 2px solid black;
     transition: background 400ms ease-in-out,
         color 400ms ease-in-out;
+}
+
+.delete {
+    border-color: $delete-btn;
 
     &:hover {
         background: $delete-btn;
@@ -22,9 +34,7 @@
 }
 
 .update {
-    border: 2px solid $update-btn;
-    transition: background 400ms ease-in-out,
-        color 400ms ease-in-out;
+    border-color: $update-btn;
 
     &:hover {
         background: $update-btn;
@@ -32,11 +42,8 @@
     }
 }
 
-
 .done {
-    border: 2px solid $done-btn;
-    transition: background 400ms ease-in-out,
-        color 400ms ease-in-out;
+    border-color: $done-btn;
 
     &:hover {
         background: $done-btn;

@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import AlertBox from "../alertBox/alertBox";
+import AlertBox from "../AlertBox/AlertBox";
 
 interface Props {
   msg: string;

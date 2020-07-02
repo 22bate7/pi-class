@@ -1,5 +1,5 @@
 import React from 'react';
-import TitleBox from '../components/titleBox/title';
+import TitleBox from '../components/TitleBox/Title';
 import '../assets/main.css';
 import styles from '../assets/theme/title.module.scss';
 

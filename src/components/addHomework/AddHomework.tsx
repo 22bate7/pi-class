@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import styles from "../../assets/addHomework.module.scss";
-import styles1 from "../../assets/theme/button.module.scss";
+// import styles1 from "../../assets/theme/button.module.scss";
 import { XIcon } from "@primer/octicons-react";
 import { connect } from "react-redux";
 import { hidePopup, showError, addHomework } from "../../actions/actions";
-import ErrorBox from "../layout/errorBox";
+import ErrorBox from "../Layout/ErrorBox";
 import { v4 as genId } from "uuid";
-import TextInput from "../inputComponents/textInput";
-import TextArea from "../inputComponents/TextArea";
-import FileDateTimeInput from "../inputComponents/FileDateTimeInput";
-import ButtonComponent from "../buttonComponents/button";
+import TextInput from "../InputComponents/TextInput";
+import TextArea from "../InputComponents/TextArea";
+import FileDateTimeInput from "../InputComponents/FileDateTimeInput";
+import ButtonComponent from "../ButtonComponents/Button";
+import classNames from "classnames";
 
 interface Props {
   homework: any;
@@ -128,11 +129,14 @@ const AddHomework: React.FunctionComponent<Props> = (props) => {
           }
         >
           <form
-            className={`${styles["addHomework-form"]} addHomework-form`}
+            className={classNames(
+              styles["addHomework-form"],
+              "addHomework-form"
+            )}
             onSubmit={handleSubmit}
           >
             <div
-              className={`${styles["close-icon"]} close-icon`}
+              className={classNames(styles["close-icon"], "close-icon")}
               onClick={hideAddHomework}
             >
               <XIcon size={24} />
@@ -143,7 +147,7 @@ const AddHomework: React.FunctionComponent<Props> = (props) => {
             <div className="group">
               <select
                 name="standard"
-                className={`${styles["class-select"]} class-select`}
+                className={classNames(styles["class-select"], "class-select")}
                 value={standard}
                 onChange={handleChange}
                 required
@@ -156,7 +160,10 @@ const AddHomework: React.FunctionComponent<Props> = (props) => {
               </select>
               <select
                 name="subject"
-                className={`${styles["subject-select"]} subject-select`}
+                className={classNames(
+                  styles["subject-select"],
+                  "subject-select"
+                )}
                 value={subject}
                 onChange={handleChange}
                 required
@@ -175,7 +182,7 @@ const AddHomework: React.FunctionComponent<Props> = (props) => {
               handleChange={handleChange}
               required={true}
               disabled={false}
-              className="input"
+              className={classNames("input")}
             />
             <TextArea
               name="description"
@@ -184,7 +191,7 @@ const AddHomework: React.FunctionComponent<Props> = (props) => {
               handleChange={handleChange}
               required={true}
               disabled={false}
-              className="textarea"
+              className={classNames("textarea")}
             />
             <div className={`${styles.group} group`}>
               <FileDateTimeInput
@@ -193,7 +200,7 @@ const AddHomework: React.FunctionComponent<Props> = (props) => {
                 value={dueDate}
                 handleChange={handleChange}
                 required={true}
-                className="input"
+                className={classNames("input")}
               />
               <FileDateTimeInput
                 type="time"
@@ -201,7 +208,7 @@ const AddHomework: React.FunctionComponent<Props> = (props) => {
                 value={dueTime}
                 handleChange={handleChange}
                 required={true}
-                className="input"
+                className={classNames("input")}
               />
               <FileDateTimeInput
                 type="file"
@@ -209,11 +216,11 @@ const AddHomework: React.FunctionComponent<Props> = (props) => {
                 value={otherFiles}
                 handleChange={handleChange}
                 required={false}
-                className="input"
+                className={classNames("input")}
               />
             </div>
             <ButtonComponent
-              className={styles1["addHomework-btn"] + " addHomework-btn"}
+              className="button"
               handleClick={handleSubmit}
               text={"Add Homework"}
             />

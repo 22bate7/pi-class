@@ -1,15 +1,16 @@
 import React, { Fragment } from "react";
 import "./assets/main.css";
-import styles from "./assets/app.module.scss";
+import styles from "./assets/theme/button.module.scss";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
-import Navbar from "./components/layout/Navbar";
-import Dashboard from "./components/dashboard/dashboard";
-import AddHomework from "./components/addHomework/AddHomework";
+import Navbar from "./components/Layout/Navbar";
+import Dashboard from "./components/Dashboard/Dashboard";
+import AddHomework from "./components/AddHomework/AddHomework";
 import { PlusIcon } from "@primer/octicons-react";
 import { showPopup } from "./actions/actions";
-import DisplayDetails from "./components/layout/DisplayDetails";
-import ShowHomework from "./components/layout/showHomework";
+import DisplayDetails from "./components/Layout/DisplayDetails";
+import ShowHomework from "./components/Layout/ShowHomework";
+import classNames from "classnames";
 
 interface Props {
   showPopup: any;
@@ -34,7 +35,7 @@ const App: React.FC<Props> = ({
           <Route path="/homework/:id" component={ShowHomework} />
         </Switch>
         <button
-          className={`${styles["addHomework-btn-floating"]} addHomework-btn-floating`}
+          className={classNames(styles["btn-floating"], "btn-floating")}
           onClick={showAddHomework}
         >
           <PlusIcon size={30} />

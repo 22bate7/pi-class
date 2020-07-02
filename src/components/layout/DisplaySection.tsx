@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { ChevronRightIcon } from "@primer/octicons-react";
 import styles from "../../assets/displaySection.module.scss";
+import classNames from "classnames";
 
 interface Props {
   showView: string;
@@ -22,7 +23,7 @@ const DisplaySection: React.FunctionComponent<Props> = ({
             className={`${styles.part} part`}
             key={Math.random()}
           >
-            <span className={`${styles["part-title"]} part-title`}>
+            <span className={classNames(styles["part-title"], "part-title")}>
               {standard}
             </span>
             <ChevronRightIcon size={20} />
@@ -32,14 +33,14 @@ const DisplaySection: React.FunctionComponent<Props> = ({
     );
   } else if (showView.toLowerCase().includes("subject")) {
     return (
-      <div className={`${styles.section} section`}>
+      <div className={classNames(styles.section, "section")}>
         {catagory.subjects.map((subject: string) => (
           <Link
             to={`/homeworks/subject/${subject}`}
             className={`${styles.part} part`}
             key={Math.random()}
           >
-            <span className={`${styles["part-title"]} part-title`}>
+            <span className={classNames(styles["part-title"], "part-title")}>
               {subject}
             </span>
             <ChevronRightIcon size={20} />
@@ -47,8 +48,6 @@ const DisplaySection: React.FunctionComponent<Props> = ({
         ))}
       </div>
     );
-  } else if (showView.toLowerCase().includes("date")) {
-    return <div>{showView}</div>;
   }
   return <React.Fragment></React.Fragment>;
 };
