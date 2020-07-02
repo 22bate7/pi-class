@@ -7,6 +7,6 @@ export default {
     component: TextArea,
 };
 
-export const DefaultTextArea = () => < TextArea / > ;
+export const DefaultTextArea = () => <TextArea /> ;
 
-export const PopulatedTextArea = () => < TextArea value = "React" / > ;
+export const PopulatedTextArea = () => <TextArea value = "React" /> ;

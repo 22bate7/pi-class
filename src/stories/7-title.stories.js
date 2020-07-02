@@ -8,9 +8,10 @@ export default {
     component: TitleBox
 }
 
-export const Title = () => < TitleBox
-text = "Hello React"
-className = {
-    styles["main-title"]
-}
-/>
+export const Title = () => 
+    <TitleBox
+        text = "Hello React"
+        className = {
+            styles["main-title"]
+        }
+    />

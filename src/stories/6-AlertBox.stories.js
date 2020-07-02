@@ -7,7 +7,13 @@ export default {
     component: AlertBox
 }
 
-export const errorAlert = () => < AlertBox className = "error"
-msg = "error" / >
-    export const successAlert = () => < AlertBox className = "success"
-msg = "success" / >
+export const errorAlert = () => 
+    <AlertBox 
+        className = "error"
+        msg = "error"
+    />
+    export const successAlert = () => 
+    <AlertBox 
+        className = "success"
+        msg = "success" 
+    />

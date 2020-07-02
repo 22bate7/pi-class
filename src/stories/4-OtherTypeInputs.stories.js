@@ -7,10 +7,20 @@ export default {
     component: FileDateTimeInput
 }
 
-export const DateInput = () => < FileDateTimeInput className = "input"
-type = "date" / >
+export const DateInput = () => 
+    <FileDateTimeInput 
+        className = "input"
+        type = "date" 
+    />
 
-    export const TimeInput = () => < FileDateTimeInput className = "input"
-type = "time" / >
-    export const FileInput = () => < FileDateTimeInput className = "input"
-type = "file" / >
+export const TimeInput = () => 
+    <FileDateTimeInput 
+        className = "input"
+        type = "time" 
+    />
+
+export const FileInput = () => 
+    <FileDateTimeInput 
+        className = "input"
+        type = "file" 
+    />

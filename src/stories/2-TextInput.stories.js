@@ -7,9 +7,11 @@ export default {
     component: TextInput,
 };
 
-export const DefaultInput = () => < TextInput className = "input" / > ;
+export const DefaultInput = () => <TextInput className = "input" /> ;
 
-export const PopulatedInput = () => ( <
-    TextInput value = "React"
-    className = "input" / >
+export const PopulatedInput = () => ( 
+    <TextInput 
+        value = "React"
+        className = "input" 
+    />
 );

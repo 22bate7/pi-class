@@ -22,6 +22,10 @@
     border: 2px solid black;
     transition: background 400ms ease-in-out,
         color 400ms ease-in-out;
+    &:hover {
+        background: black;
+        color: white;
+    }
 }
 
 .delete {
@@ -29,7 +33,7 @@
 
     &:hover {
         background: $delete-btn;
-        color: white;
+        // color: white;
     }
 }
 
@@ -38,7 +42,7 @@
 
     &:hover {
         background: $update-btn;
-        color: white;
+        // color: white;
     }
 }
 
@@ -47,6 +51,6 @@
 
     &:hover {
         background: $done-btn;
-        color: white;
+        // color: white;
     }
 }

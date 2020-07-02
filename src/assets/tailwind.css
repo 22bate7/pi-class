@@ -88,8 +88,6 @@ nav {
     @apply m-4 p-6 flex justify-center items-center flex-col;
 }
 
-.delete,
-.done,
-.update {
+.outline-btn {
     @apply m-2 p-2 rounded-lg;
 }

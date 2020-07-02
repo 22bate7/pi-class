@@ -14544,9 +14544,7 @@ nav {
   flex-direction: column;
 }
 
-.delete,
-.done,
-.update {
+.outline-btn {
   margin: 0.5rem;
   padding: 0.5rem;
   border-radius: 0.5rem;
