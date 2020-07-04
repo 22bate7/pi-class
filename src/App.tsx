@@ -4,7 +4,7 @@ import styles from "./assets/theme/button.module.scss";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import Navbar from "./components/Layout/Navbar";
-import Dashboard from "./components/Dashboard/Dashboard";
+import Dashboard from "./components/Dashboard/DashboardComponent";
 import AddHomework from "./components/AddHomeworks/AddHomeworks";
 import { PlusIcon } from "@primer/octicons-react";
 import { showPopup } from "./actions/actions";
