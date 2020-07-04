@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import Navbar from "./components/Layout/Navbar";
 import Dashboard from "./components/Dashboard/Dashboard";
-import AddHomework from "./components/AddHomework/AddHomework";
+import AddHomework from "./components/AddHomeworks/AddHomeworks";
 import { PlusIcon } from "@primer/octicons-react";
 import { showPopup } from "./actions/actions";
 import DisplayDetails from "./components/Layout/DisplayDetails";

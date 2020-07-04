@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BookIcon, SearchIcon } from "@primer/octicons-react";
 import { Link } from "react-router-dom";
 import styles from "../../assets/theme/navbar.module.scss";
-import TextInput from "../InputComponents/TextInput";
+import TextInput from "../InputComponent/Text";
 import classNames from "classnames";
 
 const Navbar: React.FunctionComponent = () => {

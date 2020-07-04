@@ -1,5 +1,5 @@
 import React from 'react';
-import FileDateTimeInput from '../components/InputComponents/FileDateTimeInput';
+import FileDateTimeInput from '../components/InputComponent/FileTimeDateInput';
 import '../assets/main.css';
 
 export default {

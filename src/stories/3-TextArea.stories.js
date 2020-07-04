@@ -1,5 +1,5 @@
 import React from "react";
-import TextArea from "../components/InputComponents/TextArea";
+import TextArea from "../components/InputComponent/TextAreaComponent";
 import "../assets/main.css";
 
 export default {

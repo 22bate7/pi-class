@@ -1,5 +1,5 @@
 import React from "react";
-import TextInput from "../components/InputComponents/TextInput";
+import TextInput from "../components/InputComponent/Text";
 import "../assets/main.css";
 
 export default {

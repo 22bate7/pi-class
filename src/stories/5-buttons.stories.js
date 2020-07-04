@@ -1,5 +1,5 @@
 import React from "react";
-import ButtonComponent from "../components/ButtonComponents/Button";
+import ButtonComponent from "../components/ButtonComponent/ButtonComponent";
 import "../assets/main.css";
 
 export default {

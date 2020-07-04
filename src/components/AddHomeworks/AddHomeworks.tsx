@@ -6,10 +6,10 @@ import { connect } from "react-redux";
 import { hidePopup, showError, addHomework } from "../../actions/actions";
 import ErrorBox from "../Layout/ErrorBox";
 import { v4 as genId } from "uuid";
-import TextInput from "../InputComponents/TextInput";
-import TextArea from "../InputComponents/TextArea";
-import FileDateTimeInput from "../InputComponents/FileDateTimeInput";
-import ButtonComponent from "../ButtonComponents/Button";
+import TextInput from "../InputComponent/Text";
+import TextArea from "../InputComponent/TextAreaComponent";
+import FileDateTimeInput from "../InputComponent/FileTimeDateInput";
+import ButtonComponent from "../ButtonComponent/ButtonComponent";
 import classNames from "classnames";
 
 interface Props {

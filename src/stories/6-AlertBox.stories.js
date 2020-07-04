@@ -1,5 +1,5 @@
 import React from 'react';
-import AlertBox from '../components/AlertBox/AlertBox';
+import AlertBox from '../components/AlertComponent/AlertComponent';
 import '../assets/main.css';
 
 export default {

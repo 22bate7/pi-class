@@ -11,9 +11,9 @@ import {
   showSuccess,
   updateHomework,
 } from "../../actions/actions";
-import TextInput from "../InputComponents/TextInput";
-import TextArea from "../InputComponents/TextArea";
-import ButtonComponent from "../ButtonComponents/Button";
+import TextInput from "../InputComponent/Text";
+import TextArea from "../InputComponent/TextAreaComponent";
+import ButtonComponent from "../ButtonComponent/ButtonComponent";
 import TitleBox from "../TitleBox/Title";
 import SuccessBox from "../Layout/SuccessBox";
 import ErrorBox from "../Layout/ErrorBox";
