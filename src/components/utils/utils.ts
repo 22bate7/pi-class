@@ -1,0 +1,1 @@
+export const isDue = (endDate:Date):boolean => endDate.getTime() - new Date().getTime() >=0

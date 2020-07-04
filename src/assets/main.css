@@ -14387,19 +14387,6 @@ nav {
   border-color: rgba(113, 128, 150, var(--border-opacity));
 }
 
-.profile-photo {
-  padding: 0.25rem;
-  border-radius: 9999px;
-  --bg-opacity: 1;
-  background-color: #fff;
-  background-color: rgba(255, 255, 255, var(--bg-opacity));
-  --text-opacity: 1;
-  color: #000;
-  color: rgba(0, 0, 0, var(--text-opacity));
-  margin-left: 0.25rem;
-  margin-right: 0.25rem;
-}
-
 .dashboard {
   margin-top: 0.5rem;
   margin-left: 1rem;
@@ -14424,7 +14411,7 @@ nav {
   padding-bottom: 0.5rem;
 }
 
-.addHomework-btn-floating {
+.btn-floating {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14482,7 +14469,7 @@ nav {
   margin-right: 0;
 }
 
-.addHomework-btn {
+.button {
   border-radius: 0.5rem;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
@@ -14557,9 +14544,7 @@ nav {
   flex-direction: column;
 }
 
-.delete,
-.done,
-.update {
+.outline-btn {
   margin: 0.5rem;
   padding: 0.5rem;
   border-radius: 0.5rem;
