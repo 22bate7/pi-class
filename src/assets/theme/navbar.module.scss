@@ -16,20 +16,20 @@ nav {
             outline: none;
 
             &::placeholder {
-                font-size: 0.8rem;
+                font-size: $sm-size;
                 color: #333;
             }
 
             &:focus {
-                border-color: $primary;
+                border-color: $primary-color;
                 color: $dark-background;
             }
         }
 
         .search-btn {
             position: absolute;
-            right: 10px;
-            margin-left: 10px;
+            right: $sm-size;
+            margin-left: $sm-size;
             cursor: pointer;
 
             svg {
@@ -51,7 +51,7 @@ nav {
         flex-direction: column;
 
         .search-box {
-            margin: 10px;
+            margin: $sm-size;
             width: 70%;
 
             input {

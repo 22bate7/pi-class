@@ -8,7 +8,9 @@ import styles from "../../assets/theme/title.module.scss";
 import TitleBox from "../TitleBox/Title";
 import moment from "moment";
 import classNames from "classnames";
+import { showSelectedViewResult } from '../utils/utils';
 
+//PropTypes
 interface Props {
   showView: string;
   homework: any;
@@ -19,14 +21,15 @@ const DisplayDetails: React.FunctionComponent<Props> = ({
   match,
   homework: { homeworks },
 }) => {
+  //in props there is catagory and homework name(ClassName or SubjectName) is passed
   const homeworksOf = match.params.name;
   const catagory = match.params.catagory;
 
   // eslint-disable-next-line array-callback-return
+  //filter homework of specific class or subject from selected class or subject
   const results = homeworks.filter((homework: any) => {
     return (
-      (catagory === "class" && homework.standard === homeworksOf) ||
-      (catagory === "subject" && homework.subject === homeworksOf)
+      showSelectedViewResult(catagory,homework,homeworksOf)
     );
   });
 
@@ -46,6 +49,7 @@ const DisplayDetails: React.FunctionComponent<Props> = ({
         </span>
       </div>
       {results && results.length > 0 ? (
+        //displaying homework of specific class/subject
         results.map((result: any) => (
           <Link
             to={`/homework/${result.id}`}

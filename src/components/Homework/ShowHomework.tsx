@@ -20,6 +20,8 @@ import ErrorBox from "../Layout/ErrorBox";
 import classNames from "classnames";
 import { isDue } from '../utils/utils';
 
+
+//PropsTypes
 interface Props {
   match: any;
   homework: any;
@@ -45,9 +47,12 @@ const ShowHomework: React.FunctionComponent<Props> = ({
   isSuccess,
   updateHomework,
 }) => {
+  //id of homework which we want to show
   const id = match.params.id;
+  //found homework form all homework
   const foundHomework = homeworks.find((homework: any) => homework.id === id);
 
+  //we can edit homework( only title and description ) if it is not due
   const [homeworkData, setHomeworkData] = useState({
     title: foundHomework ? foundHomework.title :'',
     description: foundHomework ? foundHomework.description :'',
@@ -55,8 +60,10 @@ const ShowHomework: React.FunctionComponent<Props> = ({
 
   const { title, description } = homeworkData;
 
+  //whenever we click on update homework will be updated with some validations
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
+    //title and description cannot be blank
     if (title.trim() === "") {
       showError("Please Give Updated Title");
     } else if (description.trim() === "") {
@@ -66,6 +73,8 @@ const ShowHomework: React.FunctionComponent<Props> = ({
     }
     updateHomework({ ...homeworkData, id });
   };
+
+  //handle change of title or description  
   const handleChange = (e: any) => {
     setHomeworkData({
       ...homeworkData,
@@ -160,12 +169,7 @@ const ShowHomework: React.FunctionComponent<Props> = ({
           </p>
           <div className="btn">
             <ButtonComponent
-              // className={classNames(
-              //   styles1.delete,
-              //   styles1["outline-btn"],
-              //   "delete"
-              // )}
-              className='delete outline-btn'
+              className='danger-btn outline-btn'
               handleClick={() => {
                 deleteHomework(id);
                 history.push("/");
@@ -174,7 +178,7 @@ const ShowHomework: React.FunctionComponent<Props> = ({
             />
             <ButtonComponent
             handleClick={handleSubmit}
-              className={`update outline-btn ${
+              className={`success-btn outline-btn ${
                 foundHomework.isChecked ||
                 !isDue(foundHomework.homeworkDue)
                   ? styles.hide
@@ -183,7 +187,7 @@ const ShowHomework: React.FunctionComponent<Props> = ({
               text='Update'
             />
             <ButtonComponent
-              className={`done outline-btn ${ 
+              className={`success-btn outline-btn ${ 
                 foundHomework.isChecked ? styles.hide : ""
               } done`}
               handleClick={() => {

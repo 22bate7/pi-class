@@ -5,6 +5,7 @@ import { ChevronRightIcon } from "@primer/octicons-react";
 import styles from "../../assets/displaySection.module.scss";
 import classNames from "classnames";
 
+//PropTypes
 interface Props {
   showView: string;
   catagory: any;
@@ -14,6 +15,7 @@ const DisplaySection: React.FunctionComponent<Props> = ({
   showView,
   catagory,
 }) => {
+  //Show all classes or subjects as per selected catagory
   if (showView.toLowerCase().includes("class")) {
     return (
       <div className={`${styles.section} section`}>

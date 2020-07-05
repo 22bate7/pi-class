@@ -1,8 +1,9 @@
 import { SELECT_CATAGORY } from "../actions/types";
+import { CLASS_WISE,SUBJECT_WISE } from './showTypes';
 
 const initState = {
-  catagories: ["Class-wise", "Subject-wise"],
-  selectedCatagory: "Class-wise",
+  catagories: [CLASS_WISE,SUBJECT_WISE],
+  selectedCatagory: CLASS_WISE,
   classes: [
     "2nd-A",
     "2nd-B",

@@ -3,7 +3,7 @@ import styles from "../../assets/addHomework.module.scss";
 // import styles1 from "../../assets/theme/button.module.scss";
 import { XIcon } from "@primer/octicons-react";
 import { connect } from "react-redux";
-import { hidePopup, showError, addHomework } from "../../actions/actions";
+import { showError, addHomework } from "../../actions/actions";
 import ErrorBox from "../Layout/ErrorBox";
 import { v4 as genId } from "uuid";
 import TextInput from "../InputComponent/Text";
@@ -12,16 +12,25 @@ import FileDateTimeInput from "../InputComponent/FileTimeDateInput";
 import ButtonComponent from "../ButtonComponent/ButtonComponent";
 import classNames from "classnames";
 
+//PropTypes
 interface Props {
   homework: any;
-  hidePopup: any;
+  handleClose:any;
   showError: any;
   addHomework: any;
+  showPopup:boolean
 }
 
 const AddHomework: React.FunctionComponent<Props> = (props) => {
-  const { homework, hidePopup, showError, addHomework } = props;
+  const { 
+    homework,
+    showPopup, 
+    showError, 
+    addHomework ,
+    handleClose
+  } = props;
 
+  //interface for homework data 
   interface HomeworkDataType {
     standard: string;
     subject: string;
@@ -34,6 +43,7 @@ const AddHomework: React.FunctionComponent<Props> = (props) => {
     isChecked: boolean;
   }
 
+  //default value for homework data
   const HomeworkInitState: HomeworkDataType = {
     standard: "",
     subject: "",
@@ -46,6 +56,7 @@ const AddHomework: React.FunctionComponent<Props> = (props) => {
     isChecked: false,
   };
 
+  //interface for Dates (We are storing due like 22nd June 2020T02:06:55 so for that take this two inputs and from this we convert them in to required format)
   interface Dues {
     dueDate: string;
     dueTime: string;
@@ -60,9 +71,7 @@ const AddHomework: React.FunctionComponent<Props> = (props) => {
   const { dueDate, dueTime } = dues;
   const { standard, subject, title, description, otherFiles } = homeworkData;
 
-  const hideAddHomework = () => {
-    hidePopup();
-  };
+  //whenever we input any input any field we store them using useState hook in homeworkData
   const handleChange = (e: { target: { name: any; value: any } }) => {
     if (e.target.name.includes("due")) {
       setDues({
@@ -76,32 +85,42 @@ const AddHomework: React.FunctionComponent<Props> = (props) => {
       });
     }
   };
+
+  //Add homework when submit the form with some validation
   const handleSubmit = (e: any) => {
     e.preventDefault();
     const homeworkDue = new Date(`${dueDate}T${dueTime}`);
+    //make sure std and sub are selected
     if (homeworkData.standard === "" || homeworkData.standard === "Standard") {
       console.log("Please select standard");
       showError("Please select standard");
-    } else if (
+    } 
+    else if (
+      homeworkData.subject === "" ||
+      homeworkData.standard === "Subject"
+    ) {
+      console.log("Please select subject");
+      showError("Please select subject");
+    } 
+    //make sure title,desc,dues are selected , selecting file is not mandatory
+    else if (
       homeworkData.title.trim() === "" ||
       homeworkData.description.trim() === "" ||
       dues.dueDate.trim() === "" ||
       dues.dueTime.trim() === ""
     ) {
       showError("Please fill out all fields");
-    } else if (
-      homeworkData.subject === "" ||
-      homeworkData.standard === "Subject"
-    ) {
-      console.log("Please select subject");
-      showError("Please select subject");
-    } else if (new Date(dueDate).valueOf() - new Date().valueOf() <= 0) {
+    } 
+    //make sure due date is not smaller than current date
+    else if (new Date(dueDate).valueOf() - new Date().valueOf() <= 0) {
       console.log(dueDate);
       showError("Please select correct Date");
-    } else {
+    } 
+    //all data are according then add homework
+    else {
       homeworkData.homeworkDue = homeworkDue;
       addHomework(homeworkData);
-      hideAddHomework();
+      handleClose(!showPopup);
       setHomeworkData({
         ...homeworkData,
         standard: "",
@@ -118,12 +137,13 @@ const AddHomework: React.FunctionComponent<Props> = (props) => {
     }
   };
 
+  //JSX
   return (
     <React.Fragment>
-      {homework.showPopup ? (
+      {showPopup ? (
         <div
           className={
-            homework.showPopup
+            showPopup
               ? `${styles.addHomework} ${styles.show} addHomework`
               : `${styles.hide} hide`
           }
@@ -137,7 +157,7 @@ const AddHomework: React.FunctionComponent<Props> = (props) => {
           >
             <div
               className={classNames(styles["close-icon"], "close-icon")}
-              onClick={hideAddHomework}
+              onClick={()=>{handleClose(!showPopup)}}
             >
               <XIcon size={24} />
             </div>
@@ -240,7 +260,6 @@ const mapStateToProps = (state: any) => {
 };
 
 export default connect(mapStateToProps, {
-  hidePopup,
   showError,
   addHomework,
 })(AddHomework);

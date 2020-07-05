@@ -1,8 +1,7 @@
 @import './theme/config.scss';
 
 .dashboard {
-    border-radius: 30px;
-    margin-bottom: 20px;
+    margin-bottom: $lg-size;
     span {
         &:hover {
             cursor: pointer;
@@ -10,7 +9,7 @@
     }
     span.selected {
         position: relative;
-        color: $primary;
+        color: $primary-color;
         &::before {
             position: absolute;
             content: '';
@@ -19,7 +18,7 @@
             right: 0;
             height: 2px;
             width: 0px;
-            background-color: $primary;
+            background-color: $primary-color;
             animation: animate 500ms ease-in-out forwards;
         }
         @keyframes animate {
