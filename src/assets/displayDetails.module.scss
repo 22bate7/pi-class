@@ -7,15 +7,13 @@
     background-color: $light-background;
 
     .part {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        @include grid(5,1fr);
         place-items: center;
         border-left: $sm-size solid $pending-homework !important;
     }
 
     .tags {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        @include grid(5,1fr);
         place-items: center;
         padding-bottom: $sm-size;
         color: #000;
@@ -27,6 +25,6 @@
     }
 
     .done {
-        border-left-color: $done-homework !important;
+        border-left-color: $btn-success !important;
     }
 }

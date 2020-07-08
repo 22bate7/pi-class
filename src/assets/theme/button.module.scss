@@ -11,16 +11,12 @@
 .button {
     background-color: $btn-primary;
     align-self: center;
-    transition: background 400ms ease-in-out;
-
-    &:hover {
-        background-color: $btn-primary-hover;
-    }
 }
 
 
 .outline-btn {
     @include buttons(black);
+    color: #eee;
 }
 
 .danger-btn {
