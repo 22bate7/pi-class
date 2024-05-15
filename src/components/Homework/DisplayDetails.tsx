@@ -5,9 +5,12 @@ import { ChevronRightIcon } from "@primer/octicons-react";
 import styles1 from "../../assets/displaySection.module.scss";
 import styles2 from "../../assets/displayDetails.module.scss";
 import styles from "../../assets/theme/title.module.scss";
-import TitleBox from "../titleBox/title";
+import TitleBox from "../TitleBox/Title";
 import moment from "moment";
+import classNames from "classnames";
+import { showSelectedViewResult } from '../utils/utils';
 
+//PropTypes
 interface Props {
   showView: string;
   homework: any;
@@ -18,14 +21,15 @@ const DisplayDetails: React.FunctionComponent<Props> = ({
   match,
   homework: { homeworks },
 }) => {
+  //in props there is catagory and homework name(ClassName or SubjectName) is passed
   const homeworksOf = match.params.name;
   const catagory = match.params.catagory;
 
   // eslint-disable-next-line array-callback-return
+  //filter homework of specific class or subject from selected class or subject
   const results = homeworks.filter((homework: any) => {
     return (
-      (catagory === "class" && homework.standard === homeworksOf) ||
-      (catagory === "subject" && homework.subject === homeworksOf)
+      showSelectedViewResult(catagory,homework,homeworksOf)
     );
   });
 
@@ -33,7 +37,7 @@ const DisplayDetails: React.FunctionComponent<Props> = ({
     <div className={`${styles1.section} ${styles2.section} section`}>
       <TitleBox
         text={`Homework of ${homeworksOf}`}
-        className={styles["main-title"]}
+        className={classNames(styles["main-title"])}
       />
       <div className={styles2.tags}>
         <span>Date</span>
@@ -45,6 +49,7 @@ const DisplayDetails: React.FunctionComponent<Props> = ({
         </span>
       </div>
       {results && results.length > 0 ? (
+        //displaying homework of specific class/subject
         results.map((result: any) => (
           <Link
             to={`/homework/${result.id}`}
@@ -60,7 +65,7 @@ const DisplayDetails: React.FunctionComponent<Props> = ({
             <span>
               {moment(result.createdDate).format("MMMM Do YYYY, h:mm:ss a")}
             </span>
-            <span className={`${styles1["part-title"]} part-title`}>
+            <span className={classNames(styles1["part-title"], "part-title")}>
               {result.title}
             </span>
             <span>{result.subject}</span>

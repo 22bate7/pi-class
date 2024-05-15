@@ -1,7 +1,5 @@
 import {
   SELECT_CATAGORY,
-  SHOW_POPUP,
-  HIDE_POPUP,
   SHOW_ERROR,
   HIDE_ERROR,
   ADD_HOMEWORK,
@@ -17,24 +15,6 @@ export const selectCatagory = (catagory: string) => (dispatch: any) => {
     type: SELECT_CATAGORY,
     payload: {
       catagory,
-    },
-  });
-};
-
-export const showPopup = () => (dispatch: any) => {
-  dispatch({
-    type: SHOW_POPUP,
-    payload: {
-      showPopup: true,
-    },
-  });
-};
-
-export const hidePopup = () => (dispatch: any) => {
-  dispatch({
-    type: HIDE_POPUP,
-    payload: {
-      showPopup: false,
     },
   });
 };

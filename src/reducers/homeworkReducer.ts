@@ -1,6 +1,4 @@
 import {
-  SHOW_POPUP,
-  HIDE_POPUP,
   SHOW_ERROR,
   HIDE_ERROR,
   ADD_HOMEWORK,
@@ -13,7 +11,6 @@ import {
 import { v4 as genId } from "uuid";
 
 const initState = {
-  showPopup: false,
   showError: {
     msg: "",
     show: false,
@@ -29,7 +26,7 @@ const initState = {
       subject: "Physics",
       title: "Ex-2 of phy 2a",
       description: "Try to complete all the sums ",
-      homeworkDue: new Date("2020-06-30T22:50:00"),
+      homeworkDue: new Date("2020-07-05T14:50:00"),
       otherFiles: null,
       id: "1",
       isChecked: false,
@@ -74,18 +71,7 @@ const homeworkReducer = (state = initState, action: any) => {
   const { type, payload } = action;
 
   switch (type) {
-    case SHOW_POPUP:
-      return {
-        ...state,
-        showPopup: payload.showPopup,
-      };
-
-    case HIDE_POPUP:
-      return {
-        ...state,
-        showPopup: payload.showPopup,
-      };
-
+    
     case SHOW_ERROR:
       return {
         ...state,

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import moment from "moment";
 import styles from "../../assets/showDetail.module.scss";
-import styles1 from "../../assets/theme/button.module.scss";
+// import styles1 from "../../assets/theme/button.module.scss";
 import styles2 from "../../assets/theme/title.module.scss";
 import {
   markDone,
@@ -11,13 +11,17 @@ import {
   showSuccess,
   updateHomework,
 } from "../../actions/actions";
-import TextInput from "../inputComponents/textInput";
-import TextArea from "../inputComponents/TextArea";
-import ButtonComponent from "../buttonComponents/button";
-import TitleBox from "../titleBox/title";
-import SuccessBox from "../layout/successBox";
-import ErrorBox from "../layout/errorBox";
+import TextInput from "../InputComponent/Text";
+import TextArea from "../InputComponent/TextAreaComponent";
+import ButtonComponent from "../ButtonComponent/ButtonComponent";
+import TitleBox from "../TitleBox/Title";
+import SuccessBox from "../Layout/SuccessBox";
+import ErrorBox from "../Layout/ErrorBox";
+import classNames from "classnames";
+import { isDue } from '../utils/utils';
 
+
+//PropsTypes
 interface Props {
   match: any;
   homework: any;
@@ -43,18 +47,23 @@ const ShowHomework: React.FunctionComponent<Props> = ({
   isSuccess,
   updateHomework,
 }) => {
+  //id of homework which we want to show
   const id = match.params.id;
+  //found homework form all homework
   const foundHomework = homeworks.find((homework: any) => homework.id === id);
 
+  //we can edit homework( only title and description ) if it is not due
   const [homeworkData, setHomeworkData] = useState({
-    title: foundHomework.title,
-    description: foundHomework.description,
+    title: foundHomework ? foundHomework.title :'',
+    description: foundHomework ? foundHomework.description :'',
   });
 
   const { title, description } = homeworkData;
 
+  //whenever we click on update homework will be updated with some validations
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
+    //title and description cannot be blank
     if (title.trim() === "") {
       showError("Please Give Updated Title");
     } else if (description.trim() === "") {
@@ -64,6 +73,8 @@ const ShowHomework: React.FunctionComponent<Props> = ({
     }
     updateHomework({ ...homeworkData, id });
   };
+
+  //handle change of title or description  
   const handleChange = (e: any) => {
     setHomeworkData({
       ...homeworkData,
@@ -73,25 +84,25 @@ const ShowHomework: React.FunctionComponent<Props> = ({
 
   return (
     <form
-      className={`${styles["show-homework"]} show-homework`}
+      className={classNames(styles["show-homework"], "show-homework")}
       onSubmit={handleSubmit}
     >
       {foundHomework ? (
-        <div className={styles.homework + " homework"}>
+        <div className={classNames(styles.homework, "homework")}>
           <TitleBox
             text={foundHomework.title}
-            className={styles2["main-title"]}
+            className={classNames(styles2["main-title"])}
           />
           {isError.show ? <ErrorBox /> : ""}
           {isSuccess.show ? <SuccessBox /> : ""}
-          <small className={styles.created}>
+          <small className={classNames(styles.created)}>
             Created at{" "}
             {moment(foundHomework.createdDate).format(
               "MMMM Do YYYY, h:mm:ss a"
             )}
           </small>
-          <div className={styles.section + " section title"}>
-            <span className={styles["span-title"]}>Title</span>
+          <div className={classNames(styles.section, "section", "title")}>
+            <span className={classNames(styles["span-title"])}>Title</span>
             <TextInput
               name="title"
               placeholder="Title"
@@ -99,23 +110,25 @@ const ShowHomework: React.FunctionComponent<Props> = ({
               handleChange={handleChange}
               required={true}
               disabled={
-                foundHomework.homeworkDue.getTime() - new Date().getTime() >= 0
+                isDue(foundHomework.homeworkDue)
                   ? false
                   : true
               }
-              className={styles["title-input"]}
+              className={classNames(styles["title-input"])}
             />
           </div>
-          <div className={styles.section + " section std"}>
-            <span className={styles["span-title"]}>Standard</span>
+          <div className={classNames(styles.section, "section", "std")}>
+            <span className={classNames(styles["span-title"])}>Standard</span>
             <p>: {foundHomework.standard}</p>
           </div>
-          <div className={styles.section + " section subject"}>
-            <span className={styles["span-title"]}>Subject</span>
+          <div className={classNames(styles.section, "section", "subject")}>
+            <span className={classNames(styles["span-title"])}>Subject</span>
             <p>: {foundHomework.subject}</p>
           </div>
-          <div className={styles.section + " section description"}>
-            <span className={styles["span-title"]}>Description</span>
+          <div className={classNames(styles.section, "section", "description")}>
+            <span className={classNames(styles["span-title"])}>
+              Description
+            </span>
             <TextArea
               name="description"
               placeholder="Description"
@@ -123,22 +136,22 @@ const ShowHomework: React.FunctionComponent<Props> = ({
               handleChange={handleChange}
               required={true}
               disabled={
-                foundHomework.homeworkDue.getTime() - new Date().getTime() >= 0
+                isDue(foundHomework.homeworkDue)
                   ? false
                   : true
               }
-              className={styles["title-input"]}
+              className={classNames(styles["title-input"])}
             />
           </div>
           <div
             className={`${styles.section} section ${
-              foundHomework.homeworkDue.getTime() - new Date().getTime() >= 0
+              isDue(foundHomework.homeworkDue)
                 ? styles.pending
                 : styles.dueIn
             } ${foundHomework.isChecked ? styles.hide : ""}`}
           >
             <p>
-              {foundHomework.homeworkDue.getTime() - new Date().getTime() >= 0
+              {isDue(foundHomework.homeworkDue)
                 ? `Homework Due :  ${moment(
                     foundHomework.homeworkDue
                   ).fromNow()} (on ${moment(foundHomework.homeworkDue).format(
@@ -156,26 +169,25 @@ const ShowHomework: React.FunctionComponent<Props> = ({
           </p>
           <div className="btn">
             <ButtonComponent
-              className={styles1.delete + " delete"}
+              className='danger-btn outline-btn'
               handleClick={() => {
                 deleteHomework(id);
                 history.push("/");
               }}
               text={"Delete"}
             />
-            <button
-              type="submit"
-              className={`${[styles1.update]} ${
+            <ButtonComponent
+            handleClick={handleSubmit}
+              className={`success-btn outline-btn ${
                 foundHomework.isChecked ||
-                foundHomework.homeworkDue.getTime() - new Date().getTime() <= 0
+                !isDue(foundHomework.homeworkDue)
                   ? styles.hide
                   : ""
               } update`}
-            >
-              Update
-            </button>
+              text='Update'
+            />
             <ButtonComponent
-              className={`${[styles1.done]} ${
+              className={`success-btn outline-btn ${ 
                 foundHomework.isChecked ? styles.hide : ""
               } done`}
               handleClick={() => {

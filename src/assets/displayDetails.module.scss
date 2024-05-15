@@ -1,23 +1,21 @@
 @import './theme/config.scss';
 
 .section {
-    margin: 40px 20px;
-    padding: 40px;
+    margin: $xlg-size $md-size;
+    padding: $xlg-size;
     position: relative;
     background-color: $light-background;
 
     .part {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        @include grid(5,1fr);
         place-items: center;
-        border-left: 10px solid $pending-homework !important;
+        border-left: $sm-size solid $pending-homework !important;
     }
 
     .tags {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        @include grid(5,1fr);
         place-items: center;
-        padding-bottom: 10px;
+        padding-bottom: $sm-size;
         color: #000;
         font-weight: bold;
     }
@@ -27,6 +25,6 @@
     }
 
     .done {
-        border-left-color: $done-homework !important;
+        border-left-color: $btn-success !important;
     }
 }

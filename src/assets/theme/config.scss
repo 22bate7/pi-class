@@ -1,17 +1,19 @@
-$primary:#f87060;
+$primary-color:#f87060;
 $dark-background:#4a4a4a;
 $light-background:#f8f8f8;
-$delete-btn:#ff0000;
-$normal-btn:$dark-background;
-$normal-btn-hover:#222;
-$done-btn:green;
-$update-btn:$dark-background;
+
+$btn-danger:#ff0000;
+$btn-primary:$dark-background;
+$btn-success:green;
+
 $cards-background:#eee;
-$cards-hover-backgroud:#ddd;
-$addhomework-background:#fff;
-$pending-homework:$primary;
+$pending-homework:$primary-color;
 $due-homework:#cccc0d;
-$done-homework:green;
+
+$sm-size:0.8rem;
+$md-size:1.2rem;
+$lg-size:1.7rem;
+$xlg-size:2.2rem;
 
 @mixin center {
     display: flex;
@@ -24,7 +26,20 @@ $done-homework:green;
     transition: color 400ms ease-in-out;
 
     &:hover {
-        color: $primary;
+        color: $primary-color;
         cursor: pointer;
     }
+}
+
+@mixin buttons($color) {
+    background-color: rgba($color: $color, $alpha: 0.8);
+    transition: background 400ms ease-in-out;
+    &:hover {
+        background: $color;
+    }
+}
+
+@mixin grid($repeat,$size) {
+    display: grid;
+    grid-template-columns: repeat($repeat,$size);
 }
